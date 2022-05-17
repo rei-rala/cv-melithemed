@@ -56,7 +56,13 @@
 }
 
 html,
-body {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
   padding: 0;
   margin: 0;
 }
@@ -76,7 +82,8 @@ a {
   text-decoration: none;
 }
 
-a:hover, a.hover {
+a:hover,
+a.hover {
   text-decoration: underline;
 }
 
@@ -84,14 +91,18 @@ a:hover, a.hover {
   box-sizing: border-box;
 }
 
-button, fieldset {
+button,
+fieldset {
   border-radius: var(--measure-radius);
 }
 
-header, section, footer {
+header,
+section,
+footer {
   width: 100%;
 }
 
-textarea:focus, input:focus{
+textarea:focus,
+input:focus {
   outline: none;
 }

@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 
 let brandUrl = "/assets/logo.png";
-let brandUrlMobile = "/favicon.svg";
+let brandUrlSmall = "/assets/logo-small.png";
 
 
 const BrandLogo: React.FC = () => {
@@ -16,7 +16,7 @@ const BrandLogo: React.FC = () => {
             display: grid;
             place-items: center;
 
-            background-image: url(${brandUrlMobile});
+            background-image: url(${brandUrlSmall});
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain; 
@@ -26,8 +26,8 @@ const BrandLogo: React.FC = () => {
           }
 
           a span {
-            max-width: 4rem;
-            min-height: 2.5rem;
+            max-width: 3.25rem;
+            min-height: 2.25rem;
           }
 
           @media (min-width: 768px) {

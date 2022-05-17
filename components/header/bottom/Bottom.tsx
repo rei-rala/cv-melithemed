@@ -13,7 +13,7 @@ const Bottom: React.FC = () => {
           align-items: center;
           justify-content: space-between;
           
-          height: ${MEASURES.longer};
+          height: calc(${MEASURES.longer} * 1.1);
           border-bottom: ${MEASURES.borders} inset ${COLORS.lightGray};
           padding: 0 calc(${MEASURES.padding} * 2);
           width: 100%;

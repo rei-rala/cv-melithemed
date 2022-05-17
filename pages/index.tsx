@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 const Home: NextPage = () => {
   return (
-    <div >
+    <>
       <Head>
         <title>MercadoCV | Ramon Irala</title>
         <meta name="description" content="MercadocCV de Ramon Irala" />
@@ -23,7 +23,7 @@ const Home: NextPage = () => {
       <footer >
       </footer>
 
-    </div>
+    </>
   )
 }
 
