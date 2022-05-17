@@ -6,7 +6,7 @@
   font-display: swap;
 }
 @font-face {
-  font-family: "Proxima Nova";
+  font-family: "Proxima Nova Regular";
   src: url("/assets/fonts/proximanova-regular.woff2");
   font-style: normal;
   font-weight: normal;
@@ -20,6 +20,41 @@
   font-display: swap;
 }
 
+:root {
+  --measure-borders: 1px;
+  --measure-radius: 4px;
+  --measure-shortest: 0.1rem;
+  --measure-shorter: 0.25rem;
+  --measure-short: 0.5rem;
+  --measure-normal: 1rem;
+  --measure-medium: 1.25rem;
+  --measure-long: 2rem;
+  --measure-longer: 2.3rem;
+  --measure-longest: 3.25rem;
+  --measure-padding: var(--measure-shorter);
+
+  --color-text: #111;
+  --color-gray: #333;
+  --color-light: #757575;
+  --color-lightGray: #bbb;
+  --color-white: #fff;
+  --color-background: #ededed;
+  --color-success: #20b859;
+  --color-successAlt: #adffcb;
+  --color-danger: #ff3232;
+  --color-dangerAlt: #ffd9d9;
+  --color-warning: #fff159;
+  --color-warningAlt: #ffffef;
+  --color-blue: #3483fa;
+  --color-blueAlt: #e2e2fc;
+  --color-orange: #ff7733;
+  --color-orangeAlt: #ffdfd0;
+
+  --ff-light: "Proxima Nova Light", sans-serif;
+  --ff-default: "Proxima Nova Regular", sans-serif;
+  --ff-semibold: "Proxima Nova Semibold", sans-serif;
+}
+
 html,
 body {
   padding: 0;
@@ -27,14 +62,36 @@ body {
 }
 
 body {
-  font-family: "Proxima Nova", sans-serif;
+  font-family: var(--ff-default), sans-serif;
+  background-color: var(--color-background);
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 a {
-  color: inherit;
+  color: var(--color-blue);
   text-decoration: none;
+}
+
+a:hover, a.hover {
+  text-decoration: underline;
 }
 
 * {
   box-sizing: border-box;
+}
+
+button, fieldset {
+  border-radius: var(--measure-radius);
+}
+
+header, section, footer {
+  width: 100%;
+}
+
+textarea:focus, input:focus{
+  outline: none;
 }

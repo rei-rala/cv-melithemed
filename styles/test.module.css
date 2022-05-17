@@ -1,0 +1,10 @@
+.main fieldset legend {
+  margin: auto;
+  padding-inline: 0;
+}
+
+.main fieldset div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
