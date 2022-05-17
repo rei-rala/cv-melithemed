@@ -43,7 +43,9 @@ const Home: NextPage = () => {
           </legend>
 
           <div style={{ display: showingBtns ? 'flex' : 'none' }}>
-            {Object.keys(VARIANTS).map((variant) => <Button key={`btn-v${variant}`} variant={variant}>{variant}</Button>)}
+            {/* TODO make this work
+            {Object.keys(VARIANTS).map((variant) => <Button key={`btn-v${variant}`} variant={variant}>{variant}</Button>)} 
+            */}
           </div>
         </fieldset>
 
