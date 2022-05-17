@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
@@ -10,45 +10,36 @@ const Searchbar: React.FC = () => {
   return (
     <div>
       <label>
-        <input type="text" placeholder="Estoy buscando..." maxLength={40}/>
+        <input type="text" placeholder="Estoy buscando..." maxLength={100} />
         <span></span>
-        <FontAwesomeIcon icon={faSearch} width={MEASURES.medium} height={MEASURES.medium} />
+        <FontAwesomeIcon icon={faSearch} width={'1.25rem'} height={'1.25rem'} />
       </label>
 
       <style jsx>{`
         div {
-          display: flex;
-          flex-flow: row nowrap;
-          justify-content: center;
-          align-items: center;
-          gap: calc(${MEASURES.padding}/2);
-          
-          heigth: 2rem;
+          height: 2rem;
           width: 100%;
-          padding: ${MEASURES.padding};
         }
-
 
         label {
           flex: 2;
           display: flex;
           flex-flow: row nowrap;
-          justify-content: center;
+          justify-content: space-evenly;
           align-items: center;    
           
           background: ${COLORS.white};
           color: ${COLORS.lightGray};
-          box-shadow: 0 1px 2px 0 rgba(0,0,0,.1);
+          box-shadow: 0 2px 3px 0 rgba(0,0,0,.15);
           padding: calc(${MEASURES.padding} *1.5);
           cursor: text;
         }
 
         label input {
-          margin: ${MEASURES.padding} calc(${MEASURES.padding} * 2.5);
           border: none;
           background: transparent;
           width: 100%;
-          heigth: 100%;
+          height: 100%;
           order: 1;
         }
 
@@ -62,7 +53,7 @@ const Searchbar: React.FC = () => {
             min-width: 1px;
             min-height: ${MEASURES.medium};
             border-left: 1px solid ${COLORS.lightGray};
-            margin-right: calc(${MEASURES.padding} * 1.5);
+            margin: 0 calc(${MEASURES.padding} * 1.5);
           }
         }
 
