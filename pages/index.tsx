@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Header from 'components/header/Header'
 import Link from 'next/link'
 
+import { Header, Footer } from 'components'
 
 const Home: NextPage = () => {
   return (
@@ -16,13 +16,10 @@ const Home: NextPage = () => {
       <Header />
 
       <main>
-      <Link href='/notasandbox'> Ir a panel test </Link>
-
+        <Link href='/notasandbox'> Ir a panel test </Link>
       </main>
 
-      <footer >
-      </footer>
-
+      <Footer />
     </>
   )
 }
