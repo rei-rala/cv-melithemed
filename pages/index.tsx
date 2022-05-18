@@ -1,8 +1,8 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Link from 'next/link'
+import type { NextPage } from "next";
+import Head from "next/head";
+import Link from "next/link";
 
-import { Header, Footer } from 'components'
+import { Header, Footer, ProductMain } from "components";
 
 const Home: NextPage = () => {
   return (
@@ -15,13 +15,16 @@ const Home: NextPage = () => {
 
       <Header />
 
-      <main>
-        <Link href='/notasandbox'> Ir a panel test </Link>
-      </main>
+      <ProductMain />
+
+
+      <section style={{textAlign:'center'}}>
+        <Link href="/notasandbox"> Ir a panel test </Link>
+      </section>
 
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

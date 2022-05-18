@@ -4,6 +4,7 @@ export const MEASURES = {
   shortest: 'var(--measure-shortest)',
   shorter: 'var(--measure-shorter)',
   short: 'var(--measure-short)',
+  near: 'var(--measure-near)',
   normal: 'var(--measure-normal)',
   medium: 'var(--measure-medium)',
   long: 'var(--measure-long)',

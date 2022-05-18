@@ -6,7 +6,6 @@ const defaultVariant = {
     cursor: "pointer",
     border: "none",
     'border-radius': MEASURES.radius,
-    padding: MEASURES.padding,
   },
   defaultHover: {
     filter: "brightness(0.95)",
@@ -30,8 +29,8 @@ const Button: React.FC<Props> = ({ children, onClick, variant }) => {
       <style jsx>{`
         button {
           ${defaultStyle}
-          ${variant && variant && Object.keys(VARIANTS) && !!VARIANTS[variant] && Object.entries(VARIANTS[variant]).map(([key, value]) => `${key}: ${value};`).join(';')};
-          ${!variant && `border: ${MEASURES.borders} groove ${COLORS.light};`}
+          ${(variant && variant && Object.keys(VARIANTS) && !!VARIANTS[variant] && Object.entries(VARIANTS[variant]).map(([key, value]) => `${key}: ${value};`).join(';')) || ''};
+          ${!variant ? `border: ${MEASURES.borders} groove ${COLORS.light};` : ''}
         }
         button:hover {
           ${defaultHoverStyle}

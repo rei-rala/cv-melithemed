@@ -4,7 +4,7 @@ const Document = () => {
   return (
     <Html lang='es'>
       <Head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon.svg" type="urf-8" />
         
         <link rel="preload" href="/assets/fonts/proximanova-light.woff2" as="font" crossOrigin="" />
         <link rel="preload" href="/assets/fonts/proximanova-regular.woff2" as="font" crossOrigin="" />
