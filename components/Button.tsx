@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import { Variant, MEASURES, VARIANTS, COLORS } from "styles/theme";
 
 const defaultVariant = {
@@ -16,15 +16,16 @@ interface Props {
   children: React.ReactNode;
   onClick?: (...args: any[]) => void;
   variant?: Variant;
+  addStyles?: CSSProperties | undefined;
 }
 
 let defaultStyle = Object.entries(defaultVariant.default).map(([key, value]) => `${key}: ${value};`).join(';');
 let defaultHoverStyle = Object.entries(defaultVariant.defaultHover).map(([key, value]) => `${key}: ${value};`).join(';')
 
 
-const Button: React.FC<Props> = ({ children, onClick, variant }) => {
+const Button: React.FC<Props> = ({ children, onClick, variant, addStyles }) => {
   return (
-    <button onClick={onClick} >
+    <button onClick={onClick} style={addStyles} >
       {children}
       <style jsx>{`
         button {

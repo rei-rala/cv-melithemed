@@ -1,7 +1,10 @@
+import React, { useEffect, useState } from "react"
 import Image from "next/image"
-import React, { useEffect, useMemo, useState } from "react"
+
+import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 import styles from './imgSlider.module.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type ArrayOfImages = { src: string, alt?: string }[]
 
@@ -10,7 +13,7 @@ interface IImageSliderProps {
   altText: string
 }
 
-const ImageSlider: React.FC<IImageSliderProps> = ({ images, altText }) => {
+const ImgSlider: React.FC<IImageSliderProps> = ({ images, altText }) => {
   const [showIndex, setShowIndex] = useState({
     prev: images.length - 1,
     current: 0,
@@ -61,7 +64,7 @@ const ImageSlider: React.FC<IImageSliderProps> = ({ images, altText }) => {
 
   return (
     <figure className={styles.container}>
-      <button className={styles.switcher} onClick={handleClick}  value={'prev'} >L</button>
+      <button className={styles.switcher} onClick={handleClick}  value={'prev'} > <FontAwesomeIcon icon={faAngleRight} width='18px' /> </button>
       {
         images.map((img, index) =>
           <figure
@@ -78,10 +81,10 @@ const ImageSlider: React.FC<IImageSliderProps> = ({ images, altText }) => {
         )
       }
       <span className={`${styles.indicator} ${!!changedImage ? styles.emphasize : ''}`}> {(showIndex.current + 1)}/{images.length} </span>
-      <button className={styles.switcher} onClick={handleClick} value={'next'} >R</button>
+      <button className={styles.switcher} onClick={handleClick} value={'next'} > <FontAwesomeIcon icon={faAngleRight} width='18px' /></button>
     </figure>
   )
 }
 
 
-export default ImageSlider
+export default ImgSlider;

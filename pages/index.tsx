@@ -18,8 +18,14 @@ const Home: NextPage = () => {
       <ProductMain />
 
 
-      <section style={{textAlign:'center'}}>
+      <section>
         <Link href="/notasandbox"> Ir a panel test </Link>
+
+        <style jsx>{`
+          section {
+            text-align: center;
+          }
+        `}</style>
       </section>
 
       <Footer />

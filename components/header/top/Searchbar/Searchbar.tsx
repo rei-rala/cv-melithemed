@@ -12,7 +12,7 @@ const Searchbar: React.FC = () => {
       <label>
         <input type="text" placeholder="Estoy buscando..." maxLength={100} />
         <span></span>
-        <FontAwesomeIcon icon={faSearch} width={'1.25rem'} height={'1.25rem'} />
+        <FontAwesomeIcon icon={faSearch} width='16px' />
       </label>
 
       <style jsx>{`

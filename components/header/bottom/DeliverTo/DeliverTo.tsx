@@ -15,8 +15,8 @@ const DeliverTo: React.FC = () => {
 
   return <div>
     <div>
-      <span><FontAwesomeIcon icon={faLocationDot} /></span> <span><p>Enviar a <a href={`mailto:${email}?subject=Encontré%20tu%20CV%20en%20${currentUrl ?? 'internet'}%20!`}>{email}</a></p></span>
-      <span><FontAwesomeIcon icon={faAngleRight} /></span>
+      <span><FontAwesomeIcon icon={faLocationDot} width='16px' /></span> <span><p>Enviar a <a href={`mailto:${email}?subject=Encontré%20tu%20CV%20en%20${currentUrl ?? 'internet'}%20!`}>{email}</a></p></span>
+      <span><FontAwesomeIcon icon={faAngleRight}  width='16px' /></span>
     </div>
 
     <style jsx>{`

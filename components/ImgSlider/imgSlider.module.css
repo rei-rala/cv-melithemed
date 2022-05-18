@@ -1,92 +1,98 @@
 .container {
-    position: relative;
+  position: relative;
 
-    margin: 0;
-    padding: 0;
-    border: 1px solid black;
-  
-    overflow: hidden;
-    cursor: default;
-  
-    border-radius: 0.75rem;
-  }
+  margin: 0;
+  padding: 0;
+  border: 1px solid black;
 
-  .container button {
-    border-radius: 0;
-    margin: 0;
-  }
-  
-  .indicator {
-    bottom: 2.5%;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0.5rem 0;
-    text-align: center;
-    border: 1px solid white;
-    border-radius: 0.75rem;
-    transition: opacity 2000ms ease-in-out;
-  }
-  
-  .switcher,
-  .indicator {
-    position: absolute;
-    color: white;
-    border: none;
-    background: hsla(0, 0%, 0%, 1);
-    opacity: 0.25;
-    z-index: 2;
-    width: 4rem;
-  }
-  
-  .switcher {
-    position: absolute;
-    top: 50%;
-    height: 100%;
-    transition: opacity 500ms;
-    transform: translateY(-50%);
-    z-index: 5;
-  
-    background: linear-gradient(
-      0deg,
-      hsla(0, 0%, 0%, 0.25) 0%,
-      hsla(0, 0%, 0%, 1) 20%,
-      hsla(0, 0%, 0%, 1) 80%,
-      hsla(0, 0%, 0%, 0.25) 100%
-    );
-    cursor: pointer;
-  }
-  
-  .switcher:first-child {
-    left: 0;
-  }
-  .switcher:last-child {
-    right: 0;
-  }
-  
-  :is(.switcher, .indicator):hover {
-    opacity: 1;
-  }
+  overflow: hidden;
+  cursor: default;
 
-  .current {
-    height: 400px;
-    width: 400px;
-  }
+  border-radius: 0.75rem;
+}
 
-  .current, .near {
-    transition: opacity 0.25s ease-in-out;
-    opacity: 0;
-  }
-  
-  .current, .emphasize {
-    opacity: 1;
-  }
-  
-  .near {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
-  
-  .hide {
-    display: none;
-  }
+.container button {
+  border-radius: 0;
+  margin: 0;
+}
+
+.indicator {
+  bottom: 2.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 0;
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 0.75rem;
+  transition: opacity 2000ms ease-in-out;
+}
+
+.switcher,
+.indicator {
+  position: absolute;
+  color: white;
+  border: none;
+  background: hsla(0, 0%, 0%, 1);
+  opacity: 0.25;
+  z-index: 2;
+  width: 4rem;
+}
+
+.switcher {
+  position: absolute;
+  top: 50%;
+  height: 100%;
+  transition: opacity 500ms;
+  transform: translateY(-50%);
+  z-index: 5;
+
+  background: linear-gradient(
+    0deg,
+    hsla(0, 0%, 0%, 0.25) 0%,
+    hsla(0, 0%, 0%, 1) 20%,
+    hsla(0, 0%, 0%, 1) 80%,
+    hsla(0, 0%, 0%, 0.25) 100%
+  );
+  cursor: pointer;
+}
+
+.switcher:first-child {
+  left: 0;
+}
+.switcher:last-child {
+  right: 0;
+}
+
+:is(.switcher, .indicator):hover {
+  opacity: 1;
+}
+
+.current {
+  height: 400px;
+  width: 400px;
+}
+
+.current,
+.near {
+  transition: opacity 0.25s ease-in-out;
+  opacity: 0;
+}
+
+.current,
+.emphasize {
+  opacity: 1;
+}
+
+.near {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hide {
+  display: none;
+}
+
+.switcher[value='prev'] > * {
+  transform: rotate(180deg);
+}

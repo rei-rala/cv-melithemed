@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
-import Button from "components/Button";
-import ImgSlider from "components/ImgSlider/ImgSlider";
+import { Button, ImgSlider } from "components";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -14,7 +13,7 @@ import {
 import { COLORS, MEASURES } from "styles/theme";
 
 const ProductMain: React.FC = () => {
-  
+
   const [isInFavourites, setIsInFavourites] = useState(false)
   const toggleIsInFavourites = () => setIsInFavourites(!isInFavourites)
 
@@ -26,7 +25,7 @@ const ProductMain: React.FC = () => {
         Postulante con
         <span>
           identidad verificada
-          <FontAwesomeIcon icon={faUserCheck} width="1rem" height="1rem" />
+          <FontAwesomeIcon icon={faUserCheck} width="16px" />
         </span>
       </p>
 
@@ -53,21 +52,20 @@ const ProductMain: React.FC = () => {
       <h3>Disponible</h3>
 
       <div>
-        <Button variant="info">Contactar</Button>
+        <Button variant="info" addStyles={{ padding: '0.75rem' }}>Contactar</Button>
       </div>
 
       <div>
         <span onClick={toggleIsInFavourites}>
           <FontAwesomeIcon
             icon={isInFavourites ? faHeartCircleMinus : faHeartCirclePlus}
-            width="1rem"
-            height="1rem"
+            width="16px"
           />
           {isInFavourites ? "Quitar de" : "Agregar a"} favoritos
         </span>
 
         <span>
-          <FontAwesomeIcon icon={faCopy} width="1rem" height="1rem" />
+          <FontAwesomeIcon icon={faCopy} width="16px" />
           Compartir
         </span>
       </div>
@@ -110,21 +108,10 @@ const ProductMain: React.FC = () => {
         }
 
         div:nth-child(6) {
-          display: flex;
-          justify-content: center;
-          gap: ${MEASURES.short};
-          background: red;
+          display: grid;
+          place-items: center;
         }
         
-
-        // TODO: Make this work (it currently conflicts with Button component jsx)
-        div:nth-child(6) button {
-          padding: ${MEASURES.long};
-          width: ${MEASURES.long};
-          height: ${MEASURES.long};
-          background: ${COLORS.orange};
-        }
-
         div:last-of-type {
           display: flex;
           justify-content: space-evenly;

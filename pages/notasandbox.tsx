@@ -3,7 +3,7 @@ import Header from 'components/header/Header'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import React, { useState } from 'react'
-import { COLORS, MEASURES, VARIANTS } from 'styles/theme'
+import { COLORS, MEASURES, Variant, VARIANTS } from 'styles/theme'
 
 import styles from 'styles/test.module.css'
 import Link from 'next/link'
