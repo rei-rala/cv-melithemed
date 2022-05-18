@@ -43,8 +43,6 @@ const Footer: React.FC = () => {
         }
 
         footer {
-          position: fixed;
-          bottom: 0;
           margin-top: ${MEASURES.medium};
         }
 
