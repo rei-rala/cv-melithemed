@@ -47,7 +47,7 @@
   --color-dangerAlt: #ffd9d9;
   --color-warning: #fff159;
   --color-warningAlt: #ffffef;
-  --color-blue: #3483fa;
+  --color-blue: #1e78ff;
   --color-blueAlt: #e2e2fc;
   --color-orange: #ff7733;
   --color-orangeAlt: #ffdfd0;
@@ -97,8 +97,8 @@ section {
   padding: calc(var(--measure-short) * 2) var(--measure-short);
   border: var(--measure-borders) solid var(--color-borders);
 
-  min-width: 80%;
-  max-width: 860px;
+  min-width: 45%;
+  max-width: 768px;
 }
 
 h1 {
@@ -158,7 +158,7 @@ ul, ol {
 
 @media screen and (min-width: 800px) {
   main {
-    border-radius: var(--measure-short) var(--measure-short) 0 0;
+    border-radius: var(--measure-near) var(--measure-near) 0 0;
     margin: var(--measure-long) auto 0 auto !important;
   }
 
@@ -167,7 +167,7 @@ ul, ol {
   }
 
   section:last-of-type {
-    border-radius: 0 0 var(--measure-short) var(--measure-short);
+    border-radius: 0 0 var(--measure-near) var(--measure-near);
   }
 
   main, section {

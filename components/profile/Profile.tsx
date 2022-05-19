@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import ProfileAbout from "./ProfileAbout/ProfileAbout";
 import ProfileCustom from "./ProfileCustom/ProfileCustom";
@@ -12,11 +12,15 @@ export type Highlight = {
   text: string
 }
 
-const Profile: React.FC<{ profile: any }> = ({ profile }) => {
+interface IProfile {
+  profile: any,
+  toggleFooter: () => void
+}
 
+const Profile: React.FC<IProfile> = ({ profile, toggleFooter }) => {
   return (
     <>
-      <ProfileMain name={profile.name} currently={profile.currently} headline={profile.headline} images={profile.images} />
+      <ProfileMain name={profile.name} currently={profile.currently} headline={profile.headline} images={profile.images} toggleFooter={toggleFooter} />
       <ProfileAbout about={profile.about} />
       <ProfileHighlights highlights={profile.highlights} />
       <ProfileDetail academicHistory={profile.history.academic} workHistory={profile.history.work} />

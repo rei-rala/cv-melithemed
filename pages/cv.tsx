@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 
 import { Header, Footer, Profile } from "components";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 let profileExample = {
   id: "1",
@@ -61,9 +61,34 @@ let profileExample = {
     hover: 'Habilidad',
     lines: [
       {
+        text: 'HTML5',
+        icon: 'https://img.icons8.com/color/html-5',
+        tooltip: 'Avanzado 🔥'
+      },
+      {
+        text: 'CSS3',
+        icon: 'https://img.icons8.com/color/css3',
+        tooltip: 'Avanzado 🔥'
+      },
+      {
+        text: 'SASS',
+        icon: 'https://img.icons8.com/color/sass',
+        tooltip: 'Intermedio 🤓'
+      },
+      {
+        icon: 'https://img.icons8.com/color/javascript',
+        text: 'JavaScript',
+        tooltip: 'Avanzado 🔥'
+      },
+      {
         icon: 'https://img.icons8.com/color/react-native',
         text: 'React',
         tooltip: 'Avanzado 🔥'
+      },
+      {
+        text: 'Next.js',
+        icon: 'https://img.icons8.com/color/nextjs',
+        tooltip: 'Pre intermedio? 🤔'
       },
       {
         icon: 'https://img.icons8.com/color/nodejs',
@@ -71,10 +96,16 @@ let profileExample = {
         tooltip: 'Intermedio 😊'
       },
       {
-        icon: 'https://img.icons8.com/color/javascript',
-        text: 'JavaScript',
-        tooltip: 'Avanzado 🔥'
+        text: 'Express',
+        icon: 'https://img.icons8.com/color/express',
+        tooltip: 'Intermedio 🤓'
       },
+      {
+        text: 'Firebase',
+        icon: 'https://img.icons8.com/color/firebase',
+        tooltip: 'Intermedio 🤓'
+      },
+
       {
         icon: 'https://img.icons8.com/color/python',
         text: 'Python',
@@ -91,31 +122,6 @@ let profileExample = {
         tooltip: 'Fundamentos 🤔'
       },
       {
-        text: 'MongoDB',
-        icon: 'https://img.icons8.com/color/mongodb',
-        tooltip: 'Fundamentos 🤔'
-      },
-      {
-        text: 'SQL',
-        icon: 'https://img.icons8.com/color/sql',
-        tooltip: 'Fundamentos 🤔'
-      },
-      {
-        text: 'SASS',
-        icon: 'https://img.icons8.com/color/sass',
-        tooltip: 'Intermedio 🤓'
-      },
-      {
-        text: 'CSS3',
-        icon: 'https://img.icons8.com/color/css3',
-        tooltip: 'Avanzado 🔥'
-      },
-      {
-        text: 'HTML5',
-        icon: 'https://img.icons8.com/color/html-5',
-        tooltip: 'Avanzado 🔥'
-      },
-      {
         icon: 'https://img.icons8.com/color/git',
         text: 'Git',
         tooltip: 'Intermedio 🤓'
@@ -126,24 +132,19 @@ let profileExample = {
         tooltip: 'Intermedio 🤓'
       },
       {
+        text: 'MongoDB',
+        icon: 'https://img.icons8.com/color/mongodb',
+        tooltip: 'Fundamentos 🤔'
+      },
+      {
+        text: 'SQL',
+        icon: 'https://img.icons8.com/color/sql',
+        tooltip: 'Fundamentos 🤔'
+      },
+      {
         text: 'Heroku',
         icon: 'https://img.icons8.com/color/heroku',
         tooltip: 'Basico 🤔'
-      },
-      {
-        text: 'Firebase',
-        icon: 'https://img.icons8.com/color/firebase',
-        tooltip: 'Intermedio 🤓'
-      },
-      {
-        text: 'Next.js',
-        icon: 'https://img.icons8.com/color/nextjs',
-        tooltip: 'Pre intermedio? 🤔'
-      },
-      {
-        text: 'Express',
-        icon: 'https://img.icons8.com/color/express',
-        tooltip: 'Intermedio 🤓'
       },
       {
         text: 'Excel',
@@ -165,23 +166,27 @@ let profileExample = {
   highlights: [
     {
       type: 'good',
-      text: 'Me gusta mantenerme aprendiendo',
+      text: 'Aprendizaje constante',
     },
     {
       type: 'good',
-      text: 'Soy detallista',
+      text: 'Detallista',
     },
     {
       type: 'good',
-      text: 'Muy dedicado con todo lo que me propongo',
+      text: 'Altamente dedicado',
+    },
+    {
+      type: 'good',
+      text: 'Actitud positiva',
     },
     {
       type: 'bad',
-      text: 'A veces me cuesta conformarme',
+      text: 'Conformidad',
     },
     {
       type: 'bad',
-      text: 'Soy timido',
+      text: 'Experiencia en el sector',
     }
   ],
   languages: [
@@ -198,8 +203,38 @@ let profileExample = {
   ],
 }
 
+let dropdownDurationMS = 500;
+
+
 const CvPage: NextPage = () => {
   const lastPageItem = useRef<HTMLDivElement>(null)
+
+
+  const [showingFooter, setShowingFooter] = useState(false);
+  const [isScrolledMax, setIsScrolledMax] = useState(false);
+
+
+  useEffect(() => {
+    const onScroll = () => {
+      let currentScrollY = window.innerHeight + window.scrollY
+      let minScrolledWindowPercentage = 0.95;
+
+      setIsScrolledMax(currentScrollY >= document.body.offsetHeight * minScrolledWindowPercentage);
+    }
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+
+  const toggleFooter = () => {
+    setShowingFooter(!showingFooter);
+
+    if (isScrolledMax) {
+      setTimeout(() => {
+        !showingFooter && lastPageItem?.current?.scrollIntoView({ behavior: "smooth" })
+      }, dropdownDurationMS);
+    }
+  }
 
   return (
     <>
@@ -210,9 +245,9 @@ const CvPage: NextPage = () => {
       </Head>
 
       <Header />
-      <Profile profile={profileExample} />
+      <Profile profile={profileExample} toggleFooter={toggleFooter} />
 
-      <Footer name={profileExample.name} lastPageItem={lastPageItem} />
+      <Footer profileName={profileExample.name} lastPageItem={lastPageItem} showingFooter={showingFooter} toggleFooter={toggleFooter} />
 
       <div ref={lastPageItem}></div>
     </>

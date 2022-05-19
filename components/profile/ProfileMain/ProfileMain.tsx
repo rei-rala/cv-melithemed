@@ -17,24 +17,27 @@ interface ProfileMainProps {
   currently: string;
   headline: string;
   images: string[];
+  toggleFooter: () => void;
 }
 
-const ProfileMain: React.FC<ProfileMainProps> = ({name, currently, headline, images}) => {
-
+const ProfileMain: React.FC<ProfileMainProps> = ({ name, currently, headline, images, toggleFooter }) => {
   const [isInFavourites, setIsInFavourites] = useState(false)
   const toggleIsInFavourites = () => setIsInFavourites(!isInFavourites)
 
   return (
     <main>
-      <p>{currently}</p>
-      <h1>{name} <i>{headline}</i></h1>
-      <p>
-        Postulante con
-        <span>
-          identidad verificada
-          <FontAwesomeIcon icon={faUserCheck} width="16px" />
-        </span>
-      </p>
+
+      <div>
+        <p>{currently}</p>
+        <h1>{name} <i>{headline}</i></h1>
+        <p>
+          Postulante con
+          <span>
+            identidad verificada
+            <FontAwesomeIcon icon={faUserCheck} width="16px" />
+          </span>
+        </p>
+      </div>
 
       <div>
         <ImgSlider
@@ -43,26 +46,28 @@ const ProfileMain: React.FC<ProfileMainProps> = ({name, currently, headline, ima
         />
       </div>
 
-      <h3>Disponible</h3>
-
       <div>
-        <Button variant="info" addStyles={{ padding: '0.75rem' }}>Contactar</Button>
+        <h2>Disponible</h2>
+        <div>
+          <Button variant="info" addStyles={{ padding: '0.75rem' }} onClick={toggleFooter}>Contactar</Button>
+        </div>
+
+        <div>
+          <span onClick={toggleIsInFavourites}>
+            <FontAwesomeIcon
+              icon={isInFavourites ? faHeartCircleMinus : faHeartCirclePlus}
+              width="16px"
+            />
+            {isInFavourites ? "Quitar de" : "Agregar a"} favoritos
+          </span>
+
+          <span>
+            <FontAwesomeIcon icon={faCopy} width="16px" />
+            Compartir
+          </span>
+        </div>
       </div>
 
-      <div>
-        <span onClick={toggleIsInFavourites}>
-          <FontAwesomeIcon
-            icon={isInFavourites ? faHeartCircleMinus : faHeartCirclePlus}
-            width="16px"
-          />
-          {isInFavourites ? "Quitar de" : "Agregar a"} favoritos
-        </span>
-
-        <span>
-          <FontAwesomeIcon icon={faCopy} width="16px" />
-          Compartir
-        </span>
-      </div>
 
       <style jsx>{`
         main {
@@ -74,6 +79,26 @@ const ProfileMain: React.FC<ProfileMainProps> = ({name, currently, headline, ima
 
           background: ${COLORS.white};
           gap: ${MEASURES.near};
+        }
+
+        main > div {
+          flex-direction: column;
+          align-items: space-evenly;
+          justify-content: center;
+          gap: ${MEASURES.near};
+        }
+
+        main > div:nth-child(2) {
+          display: grid;
+          place-items: center;
+          border-radius: ${MEASURES.near};
+          overflow: hidden;
+        }
+
+        main > div:nth-child(3) > div{
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
         }
 
         p:first-of-type {
@@ -94,8 +119,9 @@ const ProfileMain: React.FC<ProfileMainProps> = ({name, currently, headline, ima
           color: ${COLORS.blue};
         }
 
-        h3 {
+        main h2 {
           color: ${COLORS.success};
+          font-weight: bold;
           text-align: center;
         }
 
@@ -115,6 +141,47 @@ const ProfileMain: React.FC<ProfileMainProps> = ({name, currently, headline, ima
           align-items: center;
           gap: ${MEASURES.shorter};
           cursor: pointer;
+        }
+
+        @media (min-width: 800px) {
+          main {
+            display: grid; 
+            grid-template-columns: 1.25% 47.5% 2.5% 47.5% 1.25%; 
+            grid-template-rows: 47.5% 47.5%; 
+            gap: 0px 0px; 
+            grid-template-areas: 
+              ". profilePicture . profileTop ."
+              ". profilePicture . profileBottom ."; 
+            width: 100%; 
+            height: 100%; 
+          }
+
+          main > div :is(p, h1, h2) {
+            justify-content: center;
+            text-align: center;
+          }
+
+          main > :nth-child(1),
+          main > :nth-child(3) { 
+            padding: ${MEASURES.near};
+          }
+
+
+          main > :nth-child(1) { 
+            grid-area: profileTop;
+            padding-top: ${MEASURES.medium};
+            border: ${MEASURES.borders} solid ${COLORS.lightGray};
+            border-bottom: none;
+            border-radius: ${MEASURES.near} ${MEASURES.near} 0 0;
+          }
+          main > :nth-child(2) { grid-area: profilePicture; }
+          main > :nth-child(3) { 
+            grid-area: profileBottom;
+            padding-bottom: ${MEASURES.medium};
+            border: ${MEASURES.borders} solid ${COLORS.lightGray};
+            border-top: none;
+            border-radius: 0 0 ${MEASURES.near} ${MEASURES.near};
+          }
         }
       `}</style>
     </main>

@@ -50,11 +50,12 @@ const ProfileCustom: React.FC<{ customSection: ICustomSection }> = ({ customSect
 
       <ul>
         {lines.map((line, index) => (
-          <li key={`customSectionLine-${index}`} title={`${hover}: ${line.tooltip}`}>
+          <li key={`custom-${line.tooltip}-${index}`} title={`${hover}: ${line.tooltip}`}>
             <ImageHandler
               src={line.icon}
               alt={line.text}
-              width='30px' height='30px'
+              width='30px'
+              height='30px'
             />
             <span>{line.text}</span>
           </li>

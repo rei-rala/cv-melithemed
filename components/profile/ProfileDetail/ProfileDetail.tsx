@@ -25,7 +25,7 @@ const bothProfileJSX = `
   section article {
     margin: ${MEASURES.short};
     border: 1px inset ${COLORS.blue};
-    border-radius: ${MEASURES.short};
+    border-radius: ${MEASURES.long};
     overflow: hidden;
     text-align: center;
   }

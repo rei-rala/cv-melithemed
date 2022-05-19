@@ -3,7 +3,6 @@
 
   margin: 0;
   padding: 0;
-  border: 1px solid black;
 
   overflow: hidden;
   cursor: default;
@@ -68,8 +67,8 @@
 }
 
 .current {
-  height: 400px;
-  width: 400px;
+  height: 350px;
+  width: 350px;
 }
 
 .current,

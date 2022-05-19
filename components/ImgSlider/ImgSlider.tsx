@@ -77,8 +77,9 @@ const ImgSlider: React.FC<IImageSliderProps> = ({ images, altText }) => {
             <Image
               src={img || 'https://via.placeholder.com/400x400'}
               alt={altText + img ? ' Imagen no encontrada' : ''}
-              objectFit="contain"
+              objectFit="cover"
               layout="fill"
+              priority
             />
           </figure>
         )
