@@ -6,6 +6,11 @@ import ProfileDetail from "./ProfileDetail/ProfileDetail";
 import ProfileHighlights from "./ProfileHighlights/ProfileHighlights";
 import ProfileMain from "./ProfileMain/ProfileMain";
 
+export type Highlight = {
+  type: string,
+  text: string
+}
+
 const Profile: React.FC<{ profile: any }> = ({ profile }) => {
 
   return (

@@ -4,11 +4,6 @@ import Head from "next/head";
 import { Header, Footer, Profile } from "components";
 import { useRef } from "react";
 
-export type Highlight = {
-  type: string,
-  text: string
-}
-
 let profileExample = {
   id: "1",
   name: "Ramon Irala",
