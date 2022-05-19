@@ -59,17 +59,15 @@ const bothProfileJSX = `
 const AcademicProfileDetail: React.FC<{ academicHistory: AcademicHistory[] }> = ({ academicHistory }) => {
   return (
     <article>
-      <h3><FontAwesomeIcon icon={faSuitcase} width='12px' /> Academico</h3>
+      <h3><FontAwesomeIcon icon={faGraduationCap} width='12px' /> Academico</h3>
       <div>
         {academicHistory.map((history, index) => (
-          <>
-            <div key={`academy-${index}`}>
+            <div key={`academic-${index}`}>
               <b>{history.title}</b>
               <span>{history.where}</span>
               <span>{history.from} - {history.to}</span>
               <>{history.condition ? <i>{history.condition}</i> : null}</>
             </div>
-          </>
         ))}
       </div>
     </article>
@@ -79,10 +77,9 @@ const AcademicProfileDetail: React.FC<{ academicHistory: AcademicHistory[] }> = 
 const WorkHistory: React.FC<{ workHistory: WorkHistory[] }> = ({ workHistory }) => {
   return (
     <article>
-      <h3><FontAwesomeIcon icon={faGraduationCap} width='12px' /> Laboral</h3>
+      <h3><FontAwesomeIcon icon={faSuitcase} width='12px' /> Laboral</h3>
       <div>
         {workHistory.map((history, index) => (
-          <>
             <div key={`work-${index}`}>
               <b>{history.title} {history.seniority}</b>
               <span>{history.where}</span>
@@ -92,7 +89,6 @@ const WorkHistory: React.FC<{ workHistory: WorkHistory[] }> = ({ workHistory }) 
                   : <span>Desde {history.from} hasta {history.to}</span>
               }
             </div>
-          </>
         ))}
       </div>
 

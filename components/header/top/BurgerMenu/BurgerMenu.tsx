@@ -37,14 +37,20 @@ const BurgerMenu: React.FC = () => {
 
         div span:nth-child(1) {
           transform: ${isMenuOpen ? `rotate(45deg) ` : "rotate(0deg)"};
-          top: ${isMenuOpen ? `calc((${MEASURES.longer} + ${MEASURES.padding}) /5)` : "0"};
+          top: ${isMenuOpen ? `calc((${MEASURES.longer} + ${MEASURES.padding}) /6.25)` : "0"};
         }
         div span:nth-child(2) {
           opacity: ${isMenuOpen ? "0" : "1"};
         }
         div span:nth-child(3) {
           transform: ${isMenuOpen ? `rotate(-45deg)` : "rotate(0deg)"};
-          bottom: ${isMenuOpen ? `calc( (${MEASURES.longer} + ${MEASURES.padding}) /5)` : "0"};
+          bottom: ${isMenuOpen ? `calc( (${MEASURES.longer} + ${MEASURES.padding}) /6.25)` : "0"};
+        }
+
+        @media (min-width: 768px) {
+          div {
+            display: none;
+          }
         }
 
         `}</style>

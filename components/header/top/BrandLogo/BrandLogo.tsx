@@ -1,8 +1,8 @@
 import Link from "next/link";
 import React from "react";
 
-let brandUrl = "/assets/logo.png";
-let brandUrlSmall = "/assets/logo-small.png";
+let brandUrl = "https://http2.mlstatic.com/frontend-assets/ui-navigation/5.18.9/mercadolibre/logo__large_plus.png";
+let brandUrlSmall = "https://http2.mlstatic.com/frontend-assets/ui-navigation/5.18.9/mercadolibre/logo__small.png";
 
 
 const BrandLogo: React.FC = () => {
@@ -10,7 +10,7 @@ const BrandLogo: React.FC = () => {
     <Link href="/" passHref>
       <a>
         <span>Ir a la home 😊</span>
-        
+
         <style jsx>{`
           a {
             display: grid;

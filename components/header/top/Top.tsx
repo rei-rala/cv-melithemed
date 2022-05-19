@@ -22,12 +22,19 @@ const Top: React.FC = () => {
 
           padding: calc(${MEASURES.padding} * 2);
           width: 100%;
-          max-height: ${MEASURES.longest};
+          max-height: calc(${MEASURES.longest} * 1.2);
 
           border-bottom: ${MEASURES.borders} inset ${COLORS.lightGray};
 
           overflow: hidden;
         }
+
+        @media (min-width: 768px) {
+          div {
+            max-height: calc(${MEASURES.longest} * 1.5);
+          }
+        }
+
       `}</style>
     </div>
   );

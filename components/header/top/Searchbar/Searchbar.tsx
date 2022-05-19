@@ -19,6 +19,7 @@ const Searchbar: React.FC = () => {
         div {
           height: 2rem;
           width: 100%;
+          overflow: hidden;
         }
 
         label {
@@ -51,7 +52,7 @@ const Searchbar: React.FC = () => {
 
           label span {
             min-width: 1px;
-            min-height: ${MEASURES.medium};
+            min-height: ${MEASURES.normal};
             border-left: 1px solid ${COLORS.lightGray};
             margin: 0 calc(${MEASURES.padding} * 1.5);
           }

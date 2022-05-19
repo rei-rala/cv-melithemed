@@ -4,6 +4,6 @@ import Footer from "./Footer/Footer";
 import Button from "./Button";
 import ImgSlider from "./ImgSlider/ImgSlider";
 
-import Product from "./profile/Profile";
+import Profile from "./profile/Profile";
 
-export { Header, Footer, Button, ImgSlider, Product };
+export { Header, Footer, Button, ImgSlider, Profile };

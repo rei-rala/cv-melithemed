@@ -44,7 +44,7 @@
   height: 100%;
   transition: opacity 500ms;
   transform: translateY(-50%);
-  z-index: 5;
+  z-index: 3;
 
   background: linear-gradient(
     0deg,

@@ -12,6 +12,7 @@ const Header: React.FC = () => {
     <style jsx>{`
       header {
         background: ${COLORS.warning};
+        z-index: 10;
       }
     `}</style>
 

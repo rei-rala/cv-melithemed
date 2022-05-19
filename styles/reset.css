@@ -144,3 +144,7 @@ textarea:focus,
 input:focus {
   outline: none;
 }
+
+section:last-of-type {
+  transition: margin 1000ms;
+}
