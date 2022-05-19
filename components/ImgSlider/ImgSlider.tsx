@@ -6,10 +6,8 @@ import { faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import styles from './imgSlider.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-type ArrayOfImages = { src: string, alt?: string }[]
-
 interface IImageSliderProps {
-  images: ArrayOfImages,
+  images: string[],
   altText: string
 }
 
@@ -35,14 +33,19 @@ const ImgSlider: React.FC<IImageSliderProps> = ({ images, altText }) => {
   }
 
   useEffect(() => {
+
+
     const handleKeyDown = (e: any) => {
-      if (e.keyCode === 37) {
-        handleClick({ target: { value: 'prev' } })
-      } else if (e.keyCode === 39) {
-        handleClick({ target: { value: 'next' } })
+      // Will only work if the user has more than one image
+      if (images.length > 1 && e.keyCode in [37, 39]) {
+        // 37 = left arrow , 39 = right arrow
+        if (e.keyCode === 37) {
+          handleClick({ target: { value: 'prev' } })
+        } else {
+          handleClick({ target: { value: 'next' } })
+        }
       }
     }
-
     document.addEventListener('keydown', handleKeyDown)
 
     return () => {
@@ -64,7 +67,7 @@ const ImgSlider: React.FC<IImageSliderProps> = ({ images, altText }) => {
 
   return (
     <figure className={styles.container}>
-      <button className={styles.switcher} onClick={handleClick}  value={'prev'} > <FontAwesomeIcon icon={faAngleRight} width='18px' /> </button>
+      {images.length > 1 ? <button className={styles.switcher} onClick={handleClick} value={'prev'} > <FontAwesomeIcon icon={faAngleRight} width='18px' /> </button> : null}
       {
         images.map((img, index) =>
           <figure
@@ -72,8 +75,8 @@ const ImgSlider: React.FC<IImageSliderProps> = ({ images, altText }) => {
             className={showIndex.current === index ? styles.current : [showIndex.prev, showIndex.next].includes(index) ? styles.near : styles.hide}
           >
             <Image
-              src={img.src || 'https://http2.mlstatic.com/frontend-assets/ui-navigation/5.18.9/mercadolibre/logo__small.png'}
-              alt={img.alt ?? altText}
+              src={img || 'https://via.placeholder.com/400x400'}
+              alt={altText + img ? ' Imagen no encontrada' : ''}
               objectFit="contain"
               layout="fill"
             />
@@ -81,7 +84,7 @@ const ImgSlider: React.FC<IImageSliderProps> = ({ images, altText }) => {
         )
       }
       <span className={`${styles.indicator} ${!!changedImage ? styles.emphasize : ''}`}> {(showIndex.current + 1)}/{images.length} </span>
-      <button className={styles.switcher} onClick={handleClick} value={'next'} > <FontAwesomeIcon icon={faAngleRight} width='18px' /></button>
+      {images.length > 1 ? <button className={styles.switcher} onClick={handleClick} value={'next'} > <FontAwesomeIcon icon={faAngleRight} width='18px' /></button> : null}
     </figure>
   )
 }

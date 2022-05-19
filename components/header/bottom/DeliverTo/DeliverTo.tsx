@@ -1,22 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { COLORS, MEASURES } from "styles/theme";
 
 const DeliverTo: React.FC = () => {
-  const [currentUrl, setCurrentUrl] = useState<string>();
-  const email = 'ramonirala@outlook.com'
-
-  useEffect(() => {
-    const host = window.location.host;
-    setCurrentUrl(host);
-  }, []);
-
   return <div>
     <div>
-      <span><FontAwesomeIcon icon={faLocationDot} width='16px' /></span> <span><p>Enviar a <a href={`mailto:${email}?subject=Encontré%20tu%20CV%20en%20${currentUrl ?? 'internet'}%20!`}>{email}</a></p></span>
-      <span><FontAwesomeIcon icon={faAngleRight}  width='16px' /></span>
+      <span><FontAwesomeIcon icon={faLocationDot} width='16px' /></span> <span><p>Acercar  <a href={"#"}>oportunidades</a></p></span>
+      <span><FontAwesomeIcon icon={faAngleRight} width='16px' /></span>
     </div>
 
     <style jsx>{`

@@ -16,7 +16,7 @@ interface ProfileMainProps {
   name: string;
   currently: string;
   headline: string;
-  images: {src:string}[];
+  images: string[];
 }
 
 const ProfileMain: React.FC<ProfileMainProps> = ({name, currently, headline, images}) => {

@@ -10,13 +10,13 @@ let dropdownDurationMS = 500;
 
 let onShowSection = `
   section:last-of-type {
-    margin-bottom: calc(${MEASURES.longest} * 5);
+    margin-bottom: calc(${MEASURES.longest} * 5.5);
   }
 `
 
 let onHideSection = `
   section:last-of-type {
-    margin-bottom: calc(${MEASURES.longest} * 2);
+    margin-bottom: calc(${MEASURES.longest} * 1.5);
   }
   `
 
@@ -72,21 +72,21 @@ const Footer: React.FC<{ lastPageItem: RefObject<HTMLDivElement>, name?: string 
 
       <style jsx>{`
 
-        @keyframes simpleRainbowBkg {
+        @keyframes simpleRainbowColor {
           0% {
-            background-color: ${COLORS.warningAlt};
+            color: ${COLORS.warning};
           }
           25% {
-            background-color: ${COLORS.dangerAlt};
+            color: ${COLORS.danger};
           }
           50% {
-            background-color: ${COLORS.successAlt};
+            color: ${COLORS.success};
           }
           75% {
-            background-color: ${COLORS.blueAlt};
+            color: ${COLORS.blue};
           }
           100% {
-            background-color: ${COLORS.warningAlt};
+            color: ${COLORS.warning};
           }
         }
 
@@ -106,8 +106,6 @@ const Footer: React.FC<{ lastPageItem: RefObject<HTMLDivElement>, name?: string 
           background: ${COLORS.white};      
           padding: ${MEASURES.padding} calc(${MEASURES.padding} *2);
           overflow: hidden;
-
-          ${showingFooter ? '' : `animation: simpleRainbowBkg 5s linear infinite;`}
         }
         
         footer > :first-child {
@@ -136,13 +134,16 @@ const Footer: React.FC<{ lastPageItem: RefObject<HTMLDivElement>, name?: string 
           ${showingFooter ? `` : "padding:0;"}
         }
 
+        footer > div:last-child {
+          padding: ${MEASURES.borders};
+          animation: simpleRainbowColor 5s linear infinite;
+        }
+
         footer > div:last-child p {
-          text-align: right;
           font-size: ${MEASURES.short};
         }
 
         ul {
-          list-style: none;
           display: flex;
           flex-direction: column;
           flex-wrap: nowrap;
@@ -187,16 +188,21 @@ const Footer: React.FC<{ lastPageItem: RefObject<HTMLDivElement>, name?: string 
             position: fixed;
             bottom: 0;
           }
+
           ${showingFooter ? onShowSection : onHideSection}
         }
 
         @media (min-width: 500px) {
           b {
-            display: inline;
+            display: block;
           }
         }
 
         @media (min-width: 768px) {
+          b {
+            display: block;
+          }
+          
           ul {
             flex-direction: row;
             justify-content: space-evenly;

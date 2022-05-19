@@ -26,19 +26,7 @@ let profileExample = {
   Github: https://github.com/rei-rala
   Correo de contacto: ramonirala@outlook.com`,
   images: [
-    // I guess I'll be a vacuum cleaner by now...
-    {
-      src: "https://http2.mlstatic.com/D_NQ_NP_2X_999724-MLA48636149279_122021-F.webp",
-    },
-    {
-      src: "https://http2.mlstatic.com/D_NQ_NP_2X_791397-MLA48636149280_122021-F.webp",
-    },
-    {
-      src: "https://http2.mlstatic.com/D_NQ_NP_2X_634551-MLA48636149278_122021-F.webp",
-    },
-    {
-      src: "https://http2.mlstatic.com/D_NQ_NP_2X_950051-MLA48636149277_122021-F.webp",
-    },
+    "https://media-exp1.licdn.com/dms/image/C4D03AQHukYfNFf_aKw/profile-displayphoto-shrink_800_800/0/1616921269118?e=1658361600&v=beta&t=MXZNh40o7NUouUbLCTceBFCfkhHHZJtv568I01X2CPA",
   ],
   history: {
     academic: [
@@ -184,6 +172,10 @@ let profileExample = {
       text: 'Soy detallista',
     },
     {
+      type: 'good',
+      text: 'Muy dedicado con todo lo que me propongo',
+    },
+    {
       type: 'bad',
       text: 'A veces me cuesta conformarme',
     },
@@ -191,11 +183,24 @@ let profileExample = {
       type: 'bad',
       text: 'Soy timido',
     }
-  ]
+  ],
+  languages: [
+    {
+      name: 'Español',
+      icon: 'https://img.icons8.com/color/spain',
+      level: 'Nativo',
+    },
+    {
+      name: 'Ingles',
+      icon: 'https://img.icons8.com/color/usa',
+      level: 'Avanzado',
+    },
+  ],
 }
 
 const CvPage: NextPage = () => {
   const lastPageItem = useRef<HTMLDivElement>(null)
+
   return (
     <>
       <Head>

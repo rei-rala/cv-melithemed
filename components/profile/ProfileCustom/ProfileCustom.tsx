@@ -82,8 +82,6 @@ const ProfileCustom: React.FC<{ customSection: ICustomSection }> = ({ customSect
         }
         
         li {
-          list-style: none;
-          
           display: flex;
           flex-flow: column wrap;
           align-items: center;

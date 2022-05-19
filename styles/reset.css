@@ -96,6 +96,9 @@ main,
 section {
   padding: calc(var(--measure-short) * 2) var(--measure-short);
   border: var(--measure-borders) solid var(--color-borders);
+
+  min-width: 80%;
+  max-width: 860px;
 }
 
 h1 {
@@ -147,4 +150,27 @@ input:focus {
 
 section:last-of-type {
   transition: margin 1000ms;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+@media screen and (min-width: 800px) {
+  main {
+    border-radius: var(--measure-short) var(--measure-short) 0 0;
+    margin: var(--measure-long) auto 0 auto !important;
+  }
+
+  section {
+    margin: 0 auto 0 auto;
+  }
+
+  section:last-of-type {
+    border-radius: 0 0 var(--measure-short) var(--measure-short);
+  }
+
+  main, section {
+    padding: var(--measure-normal);
+  }
 }

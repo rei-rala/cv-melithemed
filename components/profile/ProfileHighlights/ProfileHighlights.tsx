@@ -48,13 +48,6 @@ const ProfileHighlights: React.FC<Props> = ({ highlights }) => {
                 margin-bottom: ${MEASURES.near};
               }
 
-              ul {
-                list-style: none;
-              }
-
-              li {
-                
-              }
 
             `}</style>
 

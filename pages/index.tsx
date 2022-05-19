@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -12,7 +13,6 @@ const Home: NextPage = () => {
     setCurrentUrl(host);
   }, []);
 
-
   useEffect(() => {
     router.push("/cv")
   }, [router])
@@ -24,8 +24,8 @@ const Home: NextPage = () => {
         <meta name="description" content="MercadocCV" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div style={{ display: 'grid', placeItems: 'center', height:'100vh', width:'100vw' }}>
-        <p style={{ textAlign: 'center' }}>Redireccionando a <b>{currentUrl}/cv</b> , aguarde un segundo...</p>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh', width: '100vw', textAlign: 'center' }}>
+        <p>Redireccionando a <Link href='/cv'><a><b>{currentUrl}/cv</b></a></Link></p>  <p> Aguarde un segundo...</p>
       </div>
     </>
   )
