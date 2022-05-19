@@ -12,15 +12,22 @@ import {
 
 import { COLORS, MEASURES } from "styles/theme";
 
-const ProductMain: React.FC = () => {
+interface ProfileMainProps {
+  name: string;
+  currently: string;
+  headline: string;
+  images: {src:string}[];
+}
+
+const ProfileMain: React.FC<ProfileMainProps> = ({name, currently, headline, images}) => {
 
   const [isInFavourites, setIsInFavourites] = useState(false)
   const toggleIsInFavourites = () => setIsInFavourites(!isInFavourites)
 
   return (
     <main>
-      <p>En busqueda laboral activa</p>
-      <h2>Ramon Irala - Desarrollador fullstack trainee</h2>
+      <p>{currently}</p>
+      <h1>{name} <i>{headline}</i></h1>
       <p>
         Postulante con
         <span>
@@ -31,21 +38,8 @@ const ProductMain: React.FC = () => {
 
       <div>
         <ImgSlider
-          images={[
-            {
-              src: "https://http2.mlstatic.com/D_NQ_NP_2X_999724-MLA48636149279_122021-F.webp",
-            },
-            {
-              src: "https://http2.mlstatic.com/D_NQ_NP_2X_791397-MLA48636149280_122021-F.webp",
-            },
-            {
-              src: "https://http2.mlstatic.com/D_NQ_NP_2X_634551-MLA48636149278_122021-F.webp",
-            },
-            {
-              src: "https://http2.mlstatic.com/D_NQ_NP_2X_950051-MLA48636149277_122021-F.webp",
-            },
-          ]}
-          altText="img"
+          images={images}
+          altText={`Imagenes de ${name}`}
         />
       </div>
 
@@ -76,8 +70,7 @@ const ProductMain: React.FC = () => {
           justify-content: space-evenly;
           flex-flow: column nowrap;
 
-          margin: ${MEASURES.long} 0;
-          padding: ${MEASURES.short};
+          margin: ${MEASURES.long} 0 0 0;
 
           background: ${COLORS.white};
           gap: ${MEASURES.near};
@@ -102,7 +95,6 @@ const ProductMain: React.FC = () => {
         }
 
         h3 {
-          font-size: ${MEASURES.long};
           color: ${COLORS.success};
           text-align: center;
         }
@@ -129,4 +121,4 @@ const ProductMain: React.FC = () => {
   );
 };
 
-export default ProductMain;
+export default ProfileMain;

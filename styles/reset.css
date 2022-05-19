@@ -23,10 +23,10 @@
 :root {
   --measure-borders: 1px;
   --measure-radius: 4px;
-  --measure-shortest: 0.1rem;
-  --measure-shorter: 0.25rem;
-  --measure-short: 0.5rem;
-  --measure-near: 0.75rem;
+  --measure-shortest: 0.2rem;
+  --measure-shorter: 0.35rem;
+  --measure-short: 0.65rem;
+  --measure-near: 0.85rem;
   --measure-normal: 1rem;
   --measure-medium: 1.25rem;
   --measure-long: 2rem;
@@ -34,6 +34,7 @@
   --measure-longest: 3.25rem;
   --measure-padding: var(--measure-shorter);
 
+  --color-borders: hsla(0, 0%, 20%, 0.5);
   --color-text: #111;
   --color-gray: #333;
   --color-light: #757575;
@@ -58,6 +59,8 @@
 
 html,
 body,
+main,
+section,
 h1,
 h2,
 h3,
@@ -82,6 +85,43 @@ body {
   user-select: none;
 }
 
+header,
+main,
+section,
+footer {
+  width: 100%;
+}
+
+main,
+section {
+  padding: calc(var(--measure-short) * 2) var(--measure-short);
+  border: var(--measure-borders) solid var(--color-borders);
+}
+
+h1 {
+  font-size: var(--measure-long);
+}
+
+h2 {
+  font-size: var(--measure-medium);
+}
+
+h3 {
+  font-size: var(--measure-normal);
+}
+
+h4 {
+  font-size: var(--measure-near);
+}
+
+h5 {
+  font-size: var(--measure-short);
+}
+
+p {
+  font-size: var(--measure-normal);
+}
+
 a {
   color: var(--color-blue);
   text-decoration: none;
@@ -98,12 +138,6 @@ a:hover {
 button,
 fieldset {
   border-radius: var(--measure-radius);
-}
-
-header,
-section,
-footer {
-  width: 100%;
 }
 
 textarea:focus,
