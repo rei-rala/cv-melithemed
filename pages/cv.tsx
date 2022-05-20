@@ -1,8 +1,9 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 
-import { Header, Footer, Profile } from "components";
+import { Header, Footer, Message, Profile } from "components";
 import { useEffect, useRef, useState } from "react";
+import useMessage from "hooks/useMessage";
 
 let profileExample = {
   id: "1",
@@ -207,8 +208,9 @@ let dropdownDurationMS = 500;
 
 
 const CvPage: NextPage = () => {
+  let msgVisibilityMs = 2500;
+  const { message, isMsgVisible, pushMessage } = useMessage(msgVisibilityMs)
   const lastPageItem = useRef<HTMLDivElement>(null)
-
 
   const [showingFooter, setShowingFooter] = useState(false);
   const [isScrolledMax, setIsScrolledMax] = useState(false);
@@ -245,7 +247,13 @@ const CvPage: NextPage = () => {
       </Head>
 
       <Header />
-      <Profile profile={profileExample} toggleFooter={toggleFooter} />
+      <Profile profile={profileExample} toggleFooter={toggleFooter} pushMessage={pushMessage} />
+
+      {
+        !isMsgVisible
+          ? null
+          : <Message message={message} durationMs={msgVisibilityMs} />
+      }
 
       <Footer profileName={profileExample.name} lastPageItem={lastPageItem} showingFooter={showingFooter} toggleFooter={toggleFooter} />
 

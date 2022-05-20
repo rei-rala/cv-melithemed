@@ -10,6 +10,8 @@ import {
   faHeartCircleMinus,
 } from "@fortawesome/free-solid-svg-icons";
 
+import copy from "copy-to-clipboard";
+
 import { COLORS, MEASURES } from "styles/theme";
 
 interface ProfileMainProps {
@@ -17,12 +19,26 @@ interface ProfileMainProps {
   currently: string;
   headline: string;
   images: string[];
+  pushMessage: (message: string) => void;
   toggleFooter: () => void;
 }
 
-const ProfileMain: React.FC<ProfileMainProps> = ({ name, currently, headline, images, toggleFooter }) => {
+const ProfileMain: React.FC<ProfileMainProps> = ({ name, currently, headline, images, toggleFooter, pushMessage }) => {
   const [isInFavourites, setIsInFavourites] = useState(false)
   const toggleIsInFavourites = () => setIsInFavourites(!isInFavourites)
+
+  const copyUrlToClipboard = () => {
+    const host = window.location.host;
+    const path = window.location.pathname;
+    const copyText = host + path;
+
+    try {
+      copy(copyText, {format: "text/plain"})
+      pushMessage('Link copiado a portapapeles!')
+    } catch (err: any) {
+      pushMessage('Error al copiar a portapapeles')
+    }
+  };
 
   return (
     <main>
@@ -61,7 +77,8 @@ const ProfileMain: React.FC<ProfileMainProps> = ({ name, currently, headline, im
             {isInFavourites ? "Quitar de" : "Agregar a"} favoritos
           </span>
 
-          <span>
+
+          <span onClick={copyUrlToClipboard}>
             <FontAwesomeIcon icon={faCopy} width="16px" />
             Compartir
           </span>
