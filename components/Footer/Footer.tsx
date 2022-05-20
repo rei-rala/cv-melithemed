@@ -1,4 +1,4 @@
-import React, { RefObject } from "react";
+import React, { RefObject, useEffect, useState } from "react";
 import { COLORS, MEASURES } from "styles/theme";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -35,6 +35,17 @@ interface IFooter {
 let dropdownDurationMS = 500;
 
 const Footer: React.FC<IFooter> = ({ profileName, showingFooter, toggleFooter, }) => {
+
+  const [mailLinkPath, setMailLinkPath] = useState('tu%20pagina!')
+
+  useEffect(()=>{
+    const host = window.location.host;
+    const path = window.location.pathname;
+
+    setMailLinkPath(host+path)
+  }, [])
+
+
   return !profileName ? null : (
     <footer>
       <div onClick={toggleFooter}>
@@ -64,7 +75,7 @@ const Footer: React.FC<IFooter> = ({ profileName, showingFooter, toggleFooter, }
             <b>Email</b>{" "}
             <a
               target="__blank"
-              href="mailto:ramonirala@outlook.com?subject=Encontré%20tu%20CV%20en%20localhost:3000%20!"
+              href={`mailto:ramonirala@outlook.com?subject=Encontré%20tu%20CV%20en%20${mailLinkPath}%20!`}
             >
               ramonirala@outlook.com
             </a>
