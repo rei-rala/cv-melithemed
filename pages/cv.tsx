@@ -57,6 +57,24 @@ let profileExample = {
       },
     ]
   },
+  contact: [
+    {
+      type: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/ramon-irala-220362110/',
+    },
+    {
+      type: 'GitHub',
+      url: 'https://github.com/rei-rala'
+    },
+    {
+      type: 'e-Mail',
+      url: 'ramonirala@outlook.com'
+    },
+    {
+      type: 'Portfolio',
+      url: ''
+    }
+  ],
   customSection: {
     title: 'Tecnologias',
     hover: 'Habilidad',
@@ -255,7 +273,7 @@ const CvPage: NextPage = () => {
           : <Message message={message} durationMs={msgVisibilityMs} />
       }
 
-      <Footer profileName={profileExample.name} showingFooter={showingFooter} toggleFooter={toggleFooter} />
+      <Footer profileName={profileExample.name} profileContact={profileExample.contact} showingFooter={showingFooter} toggleFooter={toggleFooter} />
 
       <div ref={lastPageItem}></div>
     </>

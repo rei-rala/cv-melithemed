@@ -1,4 +1,4 @@
-import React, { RefObject, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { COLORS, MEASURES } from "styles/theme";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,7 +7,7 @@ import {
   faEnvelope,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedin, faInstagram, faBehance, faWhatsapp, faFacebook, faYoutube } from "@fortawesome/free-brands-svg-icons";
 
 let onShowSection = `  
   aside {
@@ -30,19 +30,121 @@ interface IFooter {
   profileName?: string;
   showingFooter: boolean;
   toggleFooter: () => void;
+  profileContact?: { type: string; url: string; }[]
 }
 
 let dropdownDurationMS = 500;
 
-const Footer: React.FC<IFooter> = ({ profileName, showingFooter, toggleFooter, }) => {
+enum contactNames { email, github, linkedin, instagram, behance, whatsapp, facebook, youtube, other };
+
+const getContactType = (type: string) => {
+  let typeLower = type.toLowerCase();
+
+  // i dont think a switch will have the same behavior as an if-else
+  if (typeLower.includes("email") || typeLower.includes("mail") || typeLower.includes("correo") || typeLower.includes("correo electrónico") || typeLower.includes("e-mail")) {
+    return contactNames.email;
+  }
+  if (typeLower.includes("github")) {
+    return contactNames.github;
+  }
+  if (typeLower.includes("linkedin")) {
+    return contactNames.linkedin;
+  }
+  if (typeLower.includes("instagram")) {
+    return contactNames.instagram;
+  }
+  if (typeLower.includes("behance")) {
+    return contactNames.behance;
+  }
+  if (typeLower.includes("whatsapp")) {
+    return contactNames.whatsapp;
+  }
+  if (typeLower.includes("facebook")) {
+    return contactNames.facebook;
+  }
+  if (typeLower.includes("youtube")) {
+    return contactNames.youtube;
+  }
+
+  return contactNames.other;
+}
+
+
+let iconProp = {
+  [contactNames.email]: {
+    icon: faEnvelope,
+    color: 'orange'
+  },
+  [contactNames.github]: {
+    icon: faGithub,
+    color: 'purple'
+  },
+  [contactNames.linkedin]: {
+    icon: faLinkedin,
+    color: 'blue'
+  },
+  [contactNames.instagram]: {
+    icon: faInstagram,
+    color: 'orange'
+  },
+  [contactNames.behance]: {
+    icon: faBehance,
+    color: 'orange'
+  },
+  [contactNames.whatsapp]: {
+    icon: faWhatsapp,
+    color: 'green'
+  },
+  [contactNames.facebook]: {
+    icon: faFacebook,
+    color: 'blue'
+  },
+  [contactNames.youtube]: {
+    icon: faYoutube,
+    color: 'red'
+  },
+  [contactNames.other]: {
+    icon: faHeart,
+    color: 'red'
+  }
+}
+
+const ContactIcon: React.FC<{ type: string, url: string, urlReplaceWith?: string }> = ({ type, url, urlReplaceWith }) => {
+
+  let typeLower = type.toLowerCase();
+  let urlToShow = url.length > 0 ? url.replace('http://', '').replace('https://', '').replace('www.', '') : 'Work in progress';
+  let urlToOpen = urlReplaceWith ?? (url.length > 0 ? url : '#')
+
+  let typeToProps = getContactType(typeLower);
+  let customIconProp = iconProp[typeToProps];
+
+  return (
+    <>
+      <FontAwesomeIcon
+        icon={customIconProp.icon}
+        width='16px'
+        height='16px'
+        color={customIconProp.color}
+      />
+      <b>{type}</b>
+      {
+        urlToOpen === '#'
+          ? <i>{urlToShow}</i>
+          : <a href={urlToOpen}>{urlToShow}</a>
+      }
+    </>
+  )
+}
+
+const Footer: React.FC<IFooter> = ({ profileName, showingFooter, profileContact, toggleFooter, }) => {
 
   const [mailLinkPath, setMailLinkPath] = useState('tu%20pagina!')
 
-  useEffect(()=>{
+  useEffect(() => {
     const host = window.location.host;
     const path = window.location.pathname;
 
-    setMailLinkPath(host+path)
+    setMailLinkPath(host + path)
   }, [])
 
 
@@ -53,40 +155,15 @@ const Footer: React.FC<IFooter> = ({ profileName, showingFooter, toggleFooter, }
       </div>
       <div>
         <ul>
-          <li>
-            <FontAwesomeIcon icon={faLinkedin} color="blue" width="16px" />{" "}
-            <b>LinkedIn</b>{" "}
-            <a
-              target="__blank"
-              href="https://www.linkedin.com/in/ramon-irala-220362110/"
-            >
-              linkedin.com/in/ramon-irala-220362110
-            </a>
-          </li>
-          <li>
-            <FontAwesomeIcon icon={faGithub} color="purple" width="16px" />{" "}
-            <b>GitHub</b>{" "}
-            <a target="__blank" href="https://github.com/rei-rala">
-              github.com/rei-rala
-            </a>
-          </li>
-          <li>
-            <FontAwesomeIcon icon={faEnvelope} color="orange" width="16px" />{" "}
-            <b>Email</b>{" "}
-            <a
-              target="__blank"
-              href={`mailto:ramonirala@outlook.com?subject=Encontré%20tu%20CV%20en%20${mailLinkPath}%20!`}
-            >
-              ramonirala@outlook.com
-            </a>
-          </li>
-          <li>
-            <FontAwesomeIcon icon={faHeart} color="red" width="16px" />{" "}
-            <b>Portfolio</b>{" "}
-            <a aria-disabled href="#">
-              Work in progress
-            </a>{" "}
-          </li>
+          {
+            profileContact && profileContact.length > 0 ?
+              profileContact.map((item, index) => (
+                <li key={`profileContact-${index}`}>
+                  <ContactIcon type={item.type} url={item.url} urlReplaceWith={getContactType(item.type) === contactNames.email ? `mailto:${item.url}?Subject=%20Vi%20tu%20CV%20en%20${mailLinkPath}&body=Hola%20${profileName},%20 charlemos!` : undefined} />
+                </li>
+              ))
+              : <b>No he añadido contactos</b>
+          }
         </ul>
       </div>
 
