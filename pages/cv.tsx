@@ -255,7 +255,7 @@ const CvPage: NextPage = () => {
           : <Message message={message} durationMs={msgVisibilityMs} />
       }
 
-      <Footer profileName={profileExample.name} lastPageItem={lastPageItem} showingFooter={showingFooter} toggleFooter={toggleFooter} />
+      <Footer profileName={profileExample.name} showingFooter={showingFooter} toggleFooter={toggleFooter} />
 
       <div ref={lastPageItem}></div>
     </>

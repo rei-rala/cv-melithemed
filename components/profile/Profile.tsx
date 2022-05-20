@@ -1,3 +1,5 @@
+import { faHammer } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
 import ProfileAbout from "./ProfileAbout/ProfileAbout";
@@ -18,6 +20,7 @@ interface IProfile {
   toggleFooter: () => void,
 }
 
+
 const Profile: React.FC<IProfile> = ({ profile, toggleFooter, pushMessage }) => {
   return (
     <>
@@ -27,6 +30,9 @@ const Profile: React.FC<IProfile> = ({ profile, toggleFooter, pushMessage }) => 
       <ProfileDetail academicHistory={profile.history.academic} workHistory={profile.history.work} />
       <ProfileLanguages languages={profile.languages} />
       <ProfileCustom customSection={{ name: profile.name, ...profile.customSection, }} />
+      <aside>
+        <p><FontAwesomeIcon icon={faHammer} width='10px' /> Made by <a href="https://www.linkedin.com/in/ramon-irala-220362110/" target='__blank' >Ramon Irala</a> </p>
+      </aside>
     </>
   )
 }

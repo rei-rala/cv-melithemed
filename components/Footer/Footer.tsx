@@ -2,100 +2,108 @@ import React, { RefObject } from "react";
 import { COLORS, MEASURES } from "styles/theme";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleUp, faEnvelope, faHeart, faHammer } from "@fortawesome/free-solid-svg-icons";
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons'
+import {
+  faAngleUp,
+  faEnvelope,
+  faHeart,
+} from "@fortawesome/free-solid-svg-icons";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
-let onShowSection = `
-  section:last-of-type {
-    margin-bottom: calc(${MEASURES.longest} * 5.5);
+let onShowSection = `  
+  aside {
+    margin-bottom: calc(${MEASURES.longest} * 3.25);
   }
-`
+
+  @media (min-width: 500px) {
+    margin-bottom: calc(${MEASURES.longest} * 3);
+  }
+
+`;
 
 let onHideSection = `
-  section:last-of-type {
-    margin-bottom: calc(${MEASURES.longest} * 1.5);
+  aside {
+    margin-bottom: ${MEASURES.longest};
   }
-  `
+  `;
 
 interface IFooter {
-  lastPageItem: RefObject<HTMLDivElement>,
-  profileName?: string,
+  profileName?: string;
   showingFooter: boolean;
   toggleFooter: () => void;
 }
 
 let dropdownDurationMS = 500;
 
-const Footer: React.FC<IFooter> = ({ lastPageItem, profileName, showingFooter, toggleFooter }) => {
-
-  return (
+const Footer: React.FC<IFooter> = ({ profileName, showingFooter, toggleFooter, }) => {
+  return !profileName ? null : (
     <footer>
-      {
-        !profileName
-          ? null
-          : <>
-            <div onClick={toggleFooter}>Redes de {profileName} <span><FontAwesomeIcon icon={faAngleUp} width='16px' /></span></div>
-            <div>
-              <ul>
-                <li><FontAwesomeIcon icon={faLinkedin} color='blue' width='16px' /> <b>LinkedIn</b> <a target='__blank' href="https://www.linkedin.com/in/ramon-irala-220362110/">linkedin.com/in/ramon-irala-220362110</a></li>
-                <li><FontAwesomeIcon icon={faGithub} color='purple' width='16px' />   <b>GitHub</b> <a target='__blank' href="https://github.com/rei-rala">github.com/rei-rala</a></li>
-                <li><FontAwesomeIcon icon={faEnvelope} color='orange' width='16px' /> <b>Email</b> <a target='__blank' href="mailto:ramonirala@outlook.com?subject=Encontré%20tu%20CV%20en%20localhost:3000%20!">ramonirala@outlook.com</a></li>
-                <li><FontAwesomeIcon icon={faHeart} color='red' width='16px' />    <b>Portfolio</b> <a aria-disabled href="#">Work in progress</a> </li>
-              </ul>
-            </div>
-          </>
-      }
-
-      <div ref={lastPageItem} >
-        <p>Made by <FontAwesomeIcon icon={faHammer} width='10px' /><a href="https://www.linkedin.com/in/ramon-irala-220362110/" target='__blank' >Ramon Irala</a>  </p>
+      <div onClick={toggleFooter}>
+        Redes de {profileName} <span><FontAwesomeIcon icon={faAngleUp} width="16px" /></span>
+      </div>
+      <div>
+        <ul>
+          <li>
+            <FontAwesomeIcon icon={faLinkedin} color="blue" width="16px" />{" "}
+            <b>LinkedIn</b>{" "}
+            <a
+              target="__blank"
+              href="https://www.linkedin.com/in/ramon-irala-220362110/"
+            >
+              linkedin.com/in/ramon-irala-220362110
+            </a>
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faGithub} color="purple" width="16px" />{" "}
+            <b>GitHub</b>{" "}
+            <a target="__blank" href="https://github.com/rei-rala">
+              github.com/rei-rala
+            </a>
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faEnvelope} color="orange" width="16px" />{" "}
+            <b>Email</b>{" "}
+            <a
+              target="__blank"
+              href="mailto:ramonirala@outlook.com?subject=Encontré%20tu%20CV%20en%20localhost:3000%20!"
+            >
+              ramonirala@outlook.com
+            </a>
+          </li>
+          <li>
+            <FontAwesomeIcon icon={faHeart} color="red" width="16px" />{" "}
+            <b>Portfolio</b>{" "}
+            <a aria-disabled href="#">
+              Work in progress
+            </a>{" "}
+          </li>
+        </ul>
       </div>
 
-
       <style jsx>{`
-
-        @keyframes simpleRainbowBkgColor {
-          0% {
-            background-color: ${COLORS.warningAlt};
-          }
-          25% {
-            background-color: ${COLORS.dangerAlt};
-          }
-          50% {
-            background-color: ${COLORS.successAlt};
-          }
-          75% {
-            background-color: ${COLORS.blueAlt};
-          }
-          100% {
-            background-color: ${COLORS.warningAlt};
-          }
-        }
-
         footer {
-          margin-top: ${MEASURES.medium};
           position: relative;
           z-index: 9;
         }
-        
+
         div {
           display: flex;
           align-items: center;
           justify-content: space-around;
           text-align: center;
-          
+
           width: 100%;
-          background: ${COLORS.white};      
-          padding: ${MEASURES.padding} calc(${MEASURES.padding} *2);
+          background: ${COLORS.white};
+          padding: ${MEASURES.padding} calc(${MEASURES.padding} * 2);
           overflow: hidden;
         }
-        
+
         footer > :first-child {
           justify-content: space-around;
           flex-wrap: nowrap;
-          
+
           gap: ${MEASURES.shorter};
           width: fit-content;
-          
+
           position: relative;
           margin: auto;
           border: ${MEASURES.borders} solid ${COLORS.lightGray};
@@ -106,25 +114,13 @@ const Footer: React.FC<IFooter> = ({ lastPageItem, profileName, showingFooter, t
           cursor: pointer;
         }
 
-        
         footer > :nth-child(2) {
-          height: ${showingFooter ? `calc(${MEASURES.longest} * 3)` : "0"};
+          height: ${showingFooter ? `calc(${MEASURES.longest} * 2)` : "0"};
 
           border-top: ${MEASURES.borders} solid ${COLORS.lightGray};
-          transition: height ${dropdownDurationMS}ms ease-in-out, padding ${dropdownDurationMS}ms ease-in-out;
+          transition: height ${dropdownDurationMS}ms ease-in-out,
+            padding ${dropdownDurationMS}ms ease-in-out;
           ${showingFooter ? `` : "padding:0;"}
-        }
-
-        footer > div:last-child {
-          padding: ${MEASURES.borders};
-        }
-
-        footer > div:last-child:hover {
-          animation: simpleRainbowBkgColor 5s linear infinite;
-        }
-
-        footer > div:last-child p {
-          font-size: ${MEASURES.short};
         }
 
         ul {
@@ -134,7 +130,7 @@ const Footer: React.FC<IFooter> = ({ lastPageItem, profileName, showingFooter, t
           justify-content: space-around;
           width: 100%;
         }
-        
+
         li {
           display: flex;
           justify-content: center;
@@ -154,7 +150,7 @@ const Footer: React.FC<IFooter> = ({ lastPageItem, profileName, showingFooter, t
         li:not(:last-child) a {
           text-decoration: underline;
         }
-        
+
         b {
           display: none;
         }
@@ -164,7 +160,7 @@ const Footer: React.FC<IFooter> = ({ lastPageItem, profileName, showingFooter, t
           place-items: center;
 
           transition: transform ${dropdownDurationMS}ms ease-in-out;
-          transform: ${showingFooter ? 'rotate(-180deg)' : 'rotate(0deg)'};
+          transform: ${showingFooter ? "rotate(-180deg)" : "rotate(0deg)"};
         }
 
         @media (min-height: 300px) {
@@ -178,15 +174,19 @@ const Footer: React.FC<IFooter> = ({ lastPageItem, profileName, showingFooter, t
 
         @media (min-width: 500px) {
           b {
-            display: block;
+            display: inline !important;
           }
         }
 
         @media (min-width: 768px) {
+          footer > nth-child(2) {
+            height: ${showingFooter ? `calc(${MEASURES.longest} * 2)` : "0"};
+          }
+
           b {
             display: block;
           }
-          
+
           ul {
             flex-direction: row;
             justify-content: space-evenly;
@@ -198,11 +198,9 @@ const Footer: React.FC<IFooter> = ({ lastPageItem, profileName, showingFooter, t
             gap: ${MEASURES.shorter};
           }
         }
-        
-
       `}</style>
     </footer>
-  )
-}
+  );
+};
 
 export default Footer;

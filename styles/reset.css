@@ -59,8 +59,6 @@
 
 html,
 body,
-main,
-section,
 h1,
 h2,
 h3,
@@ -70,6 +68,14 @@ p,
 ul {
   padding: 0;
   margin: 0;
+}
+
+main, section {
+  margin: 0 auto;
+}
+
+main {
+  margin-top: 0;
 }
 
 body {
@@ -95,10 +101,16 @@ footer {
 main,
 section {
   padding: calc(var(--measure-short) * 2) var(--measure-short);
-  border: var(--measure-borders) solid var(--color-borders);
+  border-bottom: var(--measure-borders) solid var(--color-borders);
 
   min-width: 45%;
   max-width: 768px;
+}
+
+aside {
+  margin-top: var(--measure-medium);
+  text-align: center;
+  transition: margin 1000ms;
 }
 
 h1 {
@@ -148,15 +160,12 @@ input:focus {
   outline: none;
 }
 
-section:last-of-type {
-  transition: margin 1000ms;
-}
-
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 768px) {
   main {
     border-radius: var(--measure-near) var(--measure-near) 0 0;
     margin: var(--measure-long) auto 0 auto !important;
@@ -170,7 +179,16 @@ ul, ol {
     border-radius: 0 0 var(--measure-near) var(--measure-near);
   }
 
-  main, section {
+  main,
+  section {
+    border: var(--measure-borders) solid var(--color-borders);
     padding: var(--measure-normal);
+  }
+}
+
+@media print {
+  header,
+  footer {
+    display: none;
   }
 }

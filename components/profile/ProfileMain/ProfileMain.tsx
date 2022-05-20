@@ -92,8 +92,6 @@ const ProfileMain: React.FC<ProfileMainProps> = ({ name, currently, headline, im
           justify-content: space-evenly;
           flex-flow: column nowrap;
 
-          margin: ${MEASURES.long} 0 0 0;
-
           background: ${COLORS.white};
           gap: ${MEASURES.near};
         }
@@ -160,15 +158,16 @@ const ProfileMain: React.FC<ProfileMainProps> = ({ name, currently, headline, im
           cursor: pointer;
         }
 
-        @media (min-width: 800px) {
+        @media (min-width: 768px) {
           main {
             display: grid; 
-            grid-template-columns: 1.25% 47.5% 2.5% 47.5% 1.25%; 
-            grid-template-rows: 47.5% 47.5%; 
+            grid-template-columns: 47.5% 5% 47.5%; 
+            grid-template-rows: 47.5% 5% 47.5%; 
             gap: 0px 0px; 
             grid-template-areas: 
-              ". profilePicture . profileTop ."
-              ". profilePicture . profileBottom ."; 
+              "profilePicture . profileTop"
+              "profilePicture . profileTop"
+              "profilePicture . profileBottom"; 
             width: 100%; 
             height: 100%; 
           }
