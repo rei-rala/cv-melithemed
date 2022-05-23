@@ -8,17 +8,17 @@ import useMessage from "hooks/useMessage";
 let dropdownDurationMS = 500;
 
 export const getServerSideProps: (arg0: any) => any = async ({ params }) => {
-  let { email } =  params;
+  let { username } =  params;
 
-  if (!email) {
+  if (!username) {
     return {
       props: {
-        profile: undefined,
+        profile: null,
       },
     };
   }
 
-  let { profile } = await fetch(`${process.env.BACK_PROFILES_URL}/profile?email=${email}`).then(async response => await response.json())
+  let { profile } = await fetch(`${process.env.BACK_PROFILES_URL}/api/profile?username=${username}`).then(async response => await response.json()) ?? {profile:null};
 
   return {
     props: {

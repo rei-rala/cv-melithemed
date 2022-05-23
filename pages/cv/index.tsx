@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import useMessage from "hooks/useMessage";
 
 let profileExample = {
-  id: "1",
+  username: "ramonirala",
   name: "Ramon Irala",
   currently: "En busqueda laboral activa",
   headline: "Desarrollador fullstack trainee",
@@ -33,8 +33,8 @@ let profileExample = {
     academic: [
       {
         where: "Universidad Argentina de la Empresa",
-        from: "2021",
-        to: "2024",
+        from: new Date("2020-01-01"),
+        to: new Date("2024-12-31"),
         title: "Tecnicatura Universitaria en Desarrollo de Software",
         condition: "En curso",
         description: '',
@@ -43,17 +43,19 @@ let profileExample = {
     professional: [
       {
         where: "Garantizar SGR",
-        from: "agosto 2017",
-        to: "Presente",
+        from: new Date("2017-12-31"),
+        to: new Date("2022-05-31"),
         title: 'Analista de Riesgo',
         seniority: 'Semi Senior',
+        actual: true,
       },
       {
         where: "KPMG",
-        from: "diciembre 2015",
-        to: "agosto 2017",
+        from: new Date("2015-12-31"),
+        to: new Date("2017-08-01"),
         title: 'Auditor Contable',
         seniority: 'Junior',
+        actual: false,
       },
     ]
   },

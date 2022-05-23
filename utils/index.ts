@@ -69,7 +69,7 @@ export const formatDate: IFormatDate = (dateLike: Date | string, {locale=locales
   let mm = `0${src.getMonth() + 1}`.slice(-2);
   let yyyy =  `0000${src.getFullYear()}`.slice(-4);
   let yy = yyyy.slice(-2)
-  let MM = monthNames[parseInt(mm)][locale]
+  let MM = monthNames[src.getMonth()+1][locale]
   
 
   return {

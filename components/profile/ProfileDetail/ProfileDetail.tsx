@@ -19,6 +19,7 @@ type AcademicHistory = History & {
 
 type ProfessionalHistory = History & {
   seniority: string;
+  actual: boolean;
 }
 
 
@@ -89,8 +90,8 @@ const ProfessionalHistory: React.FC<{ professionalHistory: ProfessionalHistory[]
               <b>{prof.title} {prof.seniority}</b>
               <span>{prof.where}</span>
               {
-                prof.to.toLowerCase() === 'presente'
-                  ? <span>{formatDate(prof.from, {sep: ' '}).MMyyyy}</span>
+                prof.actual
+                  ? <span>Desde {formatDate(prof.from, {sep: ' '}).MMyyyy}</span>
                   : <span>{formatDate(prof.from, {sep: ' '}).MMyyyy} - {formatDate(prof.to, {sep: ' '}).MMyyyy}</span>
               }
             </div>
