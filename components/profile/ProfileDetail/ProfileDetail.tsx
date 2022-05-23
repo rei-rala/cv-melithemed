@@ -3,6 +3,7 @@ import { COLORS, MEASURES } from "styles/theme";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSuitcase, faGraduationCap } from "@fortawesome/free-solid-svg-icons";
+import { formatDate } from "utils";
 
 type History = {
   title: string;
@@ -16,7 +17,7 @@ type AcademicHistory = History & {
   condition: string;
 }
 
-type WorkHistory = History & {
+type ProfessionalHistory = History & {
   seniority: string;
 }
 
@@ -65,7 +66,11 @@ const AcademicProfileDetail: React.FC<{ academicHistory: AcademicHistory[] }> = 
             <div key={`academic-${index}`}>
               <b>{history.title}</b>
               <span>{history.where}</span>
-              <span>{history.from} - {history.to}</span>
+              <span>{formatDate(history.from, {sep: ' '}).MMyyyy} {
+                history?.condition.includes('curso') 
+                  ? ''
+                  : `- ${formatDate(history.to, {sep:' '}).MMyyyy}`
+              }</span>
               <>{history.condition ? <i>{history.condition}</i> : null}</>
             </div>
         ))}
@@ -74,19 +79,19 @@ const AcademicProfileDetail: React.FC<{ academicHistory: AcademicHistory[] }> = 
   )
 }
 
-const WorkHistory: React.FC<{ workHistory: WorkHistory[] }> = ({ workHistory }) => {
+const ProfessionalHistory: React.FC<{ professionalHistory: ProfessionalHistory[] }> = ({ professionalHistory }) => {
   return (
     <article>
       <h3><FontAwesomeIcon icon={faSuitcase} width='12px' /> Laboral</h3>
       <div>
-        {workHistory.map((history, index) => (
-            <div key={`work-${index}`}>
-              <b>{history.title} {history.seniority}</b>
-              <span>{history.where}</span>
+        {professionalHistory.map((prof, index) => (
+            <div key={`profs-${index}`}>
+              <b>{prof.title} {prof.seniority}</b>
+              <span>{prof.where}</span>
               {
-                history.to.toLowerCase() === 'presente'
-                  ? <span>Desde {history.from}</span>
-                  : <span>Desde {history.from} hasta {history.to}</span>
+                prof.to.toLowerCase() === 'presente'
+                  ? <span>{formatDate(prof.from, {sep: ' '}).MMyyyy}</span>
+                  : <span>{formatDate(prof.from, {sep: ' '}).MMyyyy} - {formatDate(prof.to, {sep: ' '}).MMyyyy}</span>
               }
             </div>
         ))}
@@ -96,17 +101,18 @@ const WorkHistory: React.FC<{ workHistory: WorkHistory[] }> = ({ workHistory }) 
   )
 }
 
-const ProfileDetail: React.FC<{ academicHistory: AcademicHistory[], workHistory: WorkHistory[] }> = ({ academicHistory, workHistory }) => {
+const ProfileDetail: React.FC<{ academicHistory: AcademicHistory[], professionalHistory: ProfessionalHistory[] }> = ({ academicHistory, professionalHistory }) => {
 
   const hasAcademicHistory = academicHistory?.length > 0;
-  const hasWorkHistory = workHistory?.length > 0;
+  const hasProfessionalHistory = professionalHistory?.length > 0;
+
 
   return (
     <section>
       <h2>Historial</h2>
 
       {
-        hasWorkHistory ? <WorkHistory workHistory={workHistory} /> : null
+        hasProfessionalHistory ? <ProfessionalHistory professionalHistory={professionalHistory} /> : null
       }
 
       {

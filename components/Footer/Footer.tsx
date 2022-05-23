@@ -7,41 +7,54 @@ import {
   faEnvelope,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
-import { faGithub, faLinkedin, faInstagram, faBehance, faWhatsapp, faFacebook, faYoutube } from "@fortawesome/free-brands-svg-icons";
-
-let onShowSection = `  
-  aside {
-    margin-bottom: calc(${MEASURES.longest} * 3.25);
-  }
-
-  @media (min-width: 500px) {
-    margin-bottom: calc(${MEASURES.longest} * 3);
-  }
-
-`;
-
-let onHideSection = `
-  aside {
-    margin-bottom: ${MEASURES.longest};
-  }
-  `;
+import {
+  faGithub,
+  faLinkedin,
+  faInstagram,
+  faBehance,
+  faWhatsapp,
+  faFacebook,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
 
 interface IFooter {
   profileName?: string;
   showingFooter: boolean;
   toggleFooter: () => void;
-  profileContact?: { type: string; url: string; }[]
+  profileContact?: { type: string; url: string }[];
 }
 
 let dropdownDurationMS = 500;
 
-enum contactNames { email, github, linkedin, instagram, behance, whatsapp, facebook, youtube, other };
+let asideOnFooterShow = `
+  aside {
+    margin-bottom: calc(${MEASURES.longest} * 3.5);
+  }
+`
+
+enum contactNames {
+  email,
+  github,
+  linkedin,
+  instagram,
+  behance,
+  whatsapp,
+  facebook,
+  youtube,
+  other,
+}
 
 const getContactType = (type: string) => {
   let typeLower = type.toLowerCase();
 
   // i dont think a switch will have the same behavior as an if-else
-  if (typeLower.includes("email") || typeLower.includes("mail") || typeLower.includes("correo") || typeLower.includes("correo electrónico") || typeLower.includes("e-mail")) {
+  if (
+    typeLower.includes("email") ||
+    typeLower.includes("mail") ||
+    typeLower.includes("correo") ||
+    typeLower.includes("correo electrónico") ||
+    typeLower.includes("e-mail")
+  ) {
     return contactNames.email;
   }
   if (typeLower.includes("github")) {
@@ -67,125 +80,176 @@ const getContactType = (type: string) => {
   }
 
   return contactNames.other;
-}
-
+};
 
 let iconProp = {
   [contactNames.email]: {
     icon: faEnvelope,
-    color: 'orange'
+    color: "orange",
   },
   [contactNames.github]: {
     icon: faGithub,
-    color: 'purple'
+    color: "purple",
   },
   [contactNames.linkedin]: {
     icon: faLinkedin,
-    color: 'blue'
+    color: "blue",
   },
   [contactNames.instagram]: {
     icon: faInstagram,
-    color: 'orange'
+    color: "orange",
   },
   [contactNames.behance]: {
     icon: faBehance,
-    color: 'orange'
+    color: "orange",
   },
   [contactNames.whatsapp]: {
     icon: faWhatsapp,
-    color: 'green'
+    color: "green",
   },
   [contactNames.facebook]: {
     icon: faFacebook,
-    color: 'blue'
+    color: "blue",
   },
   [contactNames.youtube]: {
     icon: faYoutube,
-    color: 'red'
+    color: "red",
   },
   [contactNames.other]: {
     icon: faHeart,
-    color: 'red'
-  }
-}
+    color: "red",
+  },
+};
 
-const ContactIcon: React.FC<{ type: string, url: string, urlReplaceWith?: string }> = ({ type, url, urlReplaceWith }) => {
-
+const ContactIcon: React.FC<{
+  type: string;
+  url: string;
+  urlReplaceWith?: string;
+}> = ({ type, url, urlReplaceWith }) => {
   let typeLower = type.toLowerCase();
-  let urlToShow = url.length > 0 ? url.replace('http://', '').replace('https://', '').replace('www.', '') : 'Work in progress';
-  let urlToOpen = urlReplaceWith ?? (url.length > 0 ? url : '#')
+  let urlToShow =
+    url.length > 0 && url !== '-'
+      ? url.replace("http://", "").replace("https://", "").replace("www.", "")
+      : "Work in progress";
+  let urlToOpen = urlReplaceWith !== '-' ? urlReplaceWith : (url.length > 0 ? url : "#");
 
   let typeToProps = getContactType(typeLower);
   let customIconProp = iconProp[typeToProps];
 
   return (
-    <>
+    <span>
       <FontAwesomeIcon
         icon={customIconProp.icon}
-        width='16px'
-        height='16px'
+        width="16px"
+        height="16px"
         color={customIconProp.color}
       />
       <b>{type}</b>
       {
-        urlToOpen === '#'
-          ? <i>{urlToShow}</i>
-          : <a href={urlToOpen}>{urlToShow}</a>
+        urlToOpen === "#" ? <i>{urlToShow}</i> : <a href={urlToOpen}>{urlToShow}</a>
       }
-    </>
-  )
-}
 
-const Footer: React.FC<IFooter> = ({ profileName, showingFooter, profileContact, toggleFooter, }) => {
+      <style jsx>{`
+        span {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: ${MEASURES.shorter};
+        }
 
-  const [mailLinkPath, setMailLinkPath] = useState('tu%20pagina!')
+        a {
+          cursor: pointer;
+        }
+
+        b {
+          display: none;
+        }
+
+        @media (min-width: 500px) {
+          b {
+            display: inline;
+          }
+        }
+        
+        @media (min-width: 768px) {
+          span {
+            flex-flow: column nowrap;
+            gap: ${MEASURES.borders};
+          }
+          b {
+            display: block;
+          }
+        }
+
+      `}</style>
+    </span>
+  );
+};
+
+const Footer: React.FC<IFooter> = ({
+  profileName,
+  showingFooter,
+  profileContact,
+  toggleFooter,
+}) => {
+  const [mailLinkPath, setMailLinkPath] = useState("tu%20pagina!");
 
   useEffect(() => {
     const host = window.location.host;
     const path = window.location.pathname;
 
-    setMailLinkPath(host + path)
-  }, [])
-
+    setMailLinkPath(host + path);
+  }, []);
 
   return !profileName ? null : (
     <footer>
       <div onClick={toggleFooter}>
-        Redes de {profileName} <span><FontAwesomeIcon icon={faAngleUp} width="16px" /></span>
+        Redes de {profileName}
+        <span>
+          <FontAwesomeIcon icon={faAngleUp} width="16px" />
+        </span>
       </div>
       <div>
         <ul>
-          {
-            profileContact && profileContact.length > 0 ?
-              profileContact.map((item, index) => (
-                <li key={`profileContact-${index}`}>
-                  <ContactIcon type={item.type} url={item.url} urlReplaceWith={getContactType(item.type) === contactNames.email ? `mailto:${item.url}?Subject=%20Vi%20tu%20CV%20en%20${mailLinkPath}&body=Hola%20${profileName},%20 charlemos!` : undefined} />
-                </li>
-              ))
-              : <b>No he añadido contactos</b>
-          }
+          {profileContact && profileContact.length > 0 ? (
+            profileContact.map((item, index) => (
+              <li key={`profileContact-${index}`}>
+                <ContactIcon
+                  type={item.type}
+                  url={item.url}
+                  urlReplaceWith={
+                    getContactType(item.type) === contactNames.email
+                      ? `mailto:${item.url}?Subject=%20Vi%20tu%20CV%20en%20${mailLinkPath}&body=Hola%20${profileName},%20 charlemos!`
+                      : undefined
+                  }
+                />
+              </li>
+            ))
+          ) : (
+            <b>No he añadido contactos</b>
+          )}
         </ul>
       </div>
 
       <style jsx>{`
         footer {
-          position: relative;
+          position: fixed !important;
+          bottom: 0;
           z-index: 9;
         }
 
-        div {
+        footer div {
           display: flex;
           align-items: center;
           justify-content: space-around;
           text-align: center;
 
-          width: 100%;
           background: ${COLORS.white};
           padding: ${MEASURES.padding} calc(${MEASURES.padding} * 2);
           overflow: hidden;
         }
 
-        footer > :first-child {
+        footer > div:first-child {
           justify-content: space-around;
           flex-wrap: nowrap;
 
@@ -202,8 +266,17 @@ const Footer: React.FC<IFooter> = ({ profileName, showingFooter, profileContact,
           cursor: pointer;
         }
 
-        footer > :nth-child(2) {
-          height: ${showingFooter ? `calc(${MEASURES.longest} * 2)` : "0"};
+        span {
+          display: grid;
+          place-items: center;
+
+          transition: transform ${dropdownDurationMS}ms ease-in-out;
+          transform: ${showingFooter ? "rotate(-180deg)" : "rotate(0deg)"};
+        }
+
+        footer > :last-child {
+          height: ${showingFooter ? `calc(${MEASURES.longest} * 2.4)` : "0"};
+          width: 100%;
 
           border-top: ${MEASURES.borders} solid ${COLORS.lightGray};
           transition: height ${dropdownDurationMS}ms ease-in-out,
@@ -220,59 +293,13 @@ const Footer: React.FC<IFooter> = ({ profileName, showingFooter, profileContact,
         }
 
         li {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          text-align: center;
-          gap: ${MEASURES.short};
           transition: opacity ${dropdownDurationMS * 1.5}ms ease;
           opacity: ${showingFooter ? "1" : "0"};
-          word-break: break-word;
-        }
-
-        li:last-child a {
-          color: ${COLORS.danger};
-          cursor: help;
-        }
-
-        li:not(:last-child) a {
-          text-decoration: underline;
-        }
-
-        b {
-          display: none;
-        }
-
-        span {
-          display: grid;
-          place-items: center;
-
-          transition: transform ${dropdownDurationMS}ms ease-in-out;
-          transform: ${showingFooter ? "rotate(-180deg)" : "rotate(0deg)"};
-        }
-
-        @media (min-height: 300px) {
-          footer {
-            position: fixed;
-            bottom: 0;
-          }
-
-          ${showingFooter ? onShowSection : onHideSection}
-        }
-
-        @media (min-width: 500px) {
-          b {
-            display: inline !important;
-          }
         }
 
         @media (min-width: 768px) {
           footer > nth-child(2) {
             height: ${showingFooter ? `calc(${MEASURES.longest} * 2)` : "0"};
-          }
-
-          b {
-            display: block;
           }
 
           ul {
@@ -286,6 +313,10 @@ const Footer: React.FC<IFooter> = ({ profileName, showingFooter, profileContact,
             gap: ${MEASURES.shorter};
           }
         }
+
+        ${showingFooter ? asideOnFooterShow : ''}
+
+        
       `}</style>
     </footer>
   );

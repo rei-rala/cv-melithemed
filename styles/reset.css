@@ -109,6 +109,7 @@ section {
 
 aside {
   margin-top: var(--measure-medium);
+  margin-bottom: var(--measure-longest);
   text-align: center;
   transition: margin 1000ms;
 }
