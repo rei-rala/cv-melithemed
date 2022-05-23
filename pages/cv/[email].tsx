@@ -18,8 +18,8 @@ export const getServerSideProps: (arg0: any) => any = async ({ params }) => {
     };
   }
 
-  let { profile } = await fetch(`http://127.0.0.1:5000/profile?email=${email}`).then(async response => await response.json())
-  
+  let { profile } = await fetch(`${process.env.BACK_PROFILES_URL}/profile?email=${email}`).then(async response => await response.json())
+
   return {
     props: {
       profile,

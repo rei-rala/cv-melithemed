@@ -40,7 +40,7 @@ let profileExample = {
         description: '',
       },
     ],
-    work: [
+    professional: [
       {
         where: "Garantizar SGR",
         from: "agosto 2017",

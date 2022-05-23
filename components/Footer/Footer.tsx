@@ -127,11 +127,8 @@ const ContactIcon: React.FC<{
   urlReplaceWith?: string;
 }> = ({ type, url, urlReplaceWith }) => {
   let typeLower = type.toLowerCase();
-  let urlToShow =
-    url.length > 0 && url !== '-'
-      ? url.replace("http://", "").replace("https://", "").replace("www.", "")
-      : "Work in progress";
-  let urlToOpen = urlReplaceWith !== '-' ? urlReplaceWith : (url.length > 0 ? url : "#");
+  let urlToShow = url.length > 0 && url !== '-' ? url.replace("http://", "").replace("https://", "").replace("www.", "") : "Work in progress";
+  let urlToOpen = urlReplaceWith && urlReplaceWith.length > 1 ? urlReplaceWith : (url.length > 0 ? url : "#");
 
   let typeToProps = getContactType(typeLower);
   let customIconProp = iconProp[typeToProps];
@@ -146,7 +143,7 @@ const ContactIcon: React.FC<{
       />
       <b>{type}</b>
       {
-        urlToOpen === "#" ? <i>{urlToShow}</i> : <a href={urlToOpen}>{urlToShow}</a>
+        urlToOpen === "#" ? <i>{urlToShow}</i> : <a href={urlToOpen} target='__blank' >{urlToShow}</a>
       }
 
       <style jsx>{`
@@ -219,7 +216,7 @@ const Footer: React.FC<IFooter> = ({
                   url={item.url}
                   urlReplaceWith={
                     getContactType(item.type) === contactNames.email
-                      ? `mailto:${item.url}?Subject=%20Vi%20tu%20CV%20en%20${mailLinkPath}&body=Hola%20${profileName},%20 charlemos!`
+                      ? `mailto:${item.url}?Subject=Vi%20tu%20CV%20en%20${mailLinkPath}&body=Hola%20${profileName},%20 charlemos!`
                       : undefined
                   }
                 />
