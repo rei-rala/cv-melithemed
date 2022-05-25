@@ -46,18 +46,19 @@ const ProfileCustom: React.FC<{ customSection: ICustomSection }> = ({ customSect
     <section>
       <i title={`Esta seccion fue añadida por ${name}`}>Seccion personalizada</i>
       <h2>{title}</h2>
-      <p>Pasa el cursor sobre algun icono para conocer el detalle</p>
+      <sup>{hover} sobre las mismas</sup>
 
       <ul>
-        {lines.map((line, index) => (
-          <li key={`custom-${line.tooltip}-${index}`} title={`${hover}: ${line.tooltip}`}>
+        {lines.map(({icon, text, tooltip}, index) => (
+          <li key={`custom-${tooltip}-${index}`} title={`${hover} ${text}: ${tooltip}`}>
             <ImageHandler
-              src={line.icon}
-              alt={line.text}
+              src={icon}
+              alt={text}
               width='30px'
               height='30px'
             />
-            <span>{line.text}</span>
+            <span><b>{text}</b></span>
+            <span>{tooltip}</span>
           </li>
         ))}
       </ul>
@@ -101,7 +102,18 @@ const ProfileCustom: React.FC<{ customSection: ICustomSection }> = ({ customSect
 
         li {
           display: flex;
+        }
 
+        @media only screen and (hover: none) and (pointer: coarse){
+          p {
+            display: none;
+          }
+          li {
+            flex-direction: row;
+            gap: ${MEASURES.shorter};
+            background: none;
+            border: none;
+          }
         }
 
         `}</style>

@@ -33,18 +33,19 @@ let profileExample = {
     academic: [
       {
         where: "Universidad Argentina de la Empresa",
-        from: new Date("2020-01-01"),
+        from: new Date("2020-01-31"),
         to: new Date("2024-12-31"),
         title: "Tecnicatura Universitaria en Desarrollo de Software",
         condition: "En curso",
         description: '',
+        actual: true,
       },
     ],
     professional: [
       {
         where: "Garantizar SGR",
         from: new Date("2017-12-31"),
-        to: new Date("2022-05-31"),
+        to: new Date("2022-12-31"),
         title: 'Analista de Riesgo',
         seniority: 'Semi Senior',
         actual: true,
@@ -52,7 +53,7 @@ let profileExample = {
       {
         where: "KPMG",
         from: new Date("2015-12-31"),
-        to: new Date("2017-08-01"),
+        to: new Date("2017-08-31"),
         title: 'Auditor Contable',
         seniority: 'Junior',
         actual: false,
@@ -79,115 +80,119 @@ let profileExample = {
   ],
   customSection: {
     title: 'Tecnologias',
-    hover: 'Habilidad',
+    hover: 'Conocimientos',
     lines: [
       {
         text: 'HTML5',
         icon: 'https://img.icons8.com/color/html-5',
-        tooltip: 'Avanzado 🔥'
+        tooltip: 'Avanzado'
       },
       {
         text: 'CSS3',
         icon: 'https://img.icons8.com/color/css3',
-        tooltip: 'Avanzado 🔥'
+        tooltip: 'Avanzado'
       },
       {
         text: 'SASS',
         icon: 'https://img.icons8.com/color/sass',
-        tooltip: 'Intermedio 🤓'
+        tooltip: 'Intermedio'
       },
       {
         icon: 'https://img.icons8.com/color/javascript',
         text: 'JavaScript',
-        tooltip: 'Avanzado 🔥'
+        tooltip: 'Avanzado'
       },
       {
         icon: 'https://img.icons8.com/color/react-native',
         text: 'React',
-        tooltip: 'Avanzado 🔥'
+        tooltip: 'Avanzado'
       },
       {
         text: 'Next.js',
         icon: 'https://img.icons8.com/color/nextjs',
-        tooltip: 'Pre intermedio? 🤔'
+        tooltip: 'Intermedio'
       },
       {
         icon: 'https://img.icons8.com/color/nodejs',
         text: 'Node.js',
-        tooltip: 'Intermedio 😊'
+        tooltip: 'Intermedio'
       },
       {
         text: 'Express',
         icon: 'https://img.icons8.com/color/express',
-        tooltip: 'Intermedio 🤓'
+        tooltip: 'Intermedio'
       },
       {
         text: 'Firebase',
         icon: 'https://img.icons8.com/color/firebase',
-        tooltip: 'Intermedio 🤓'
+        tooltip: 'Intermedio'
       },
 
       {
         icon: 'https://img.icons8.com/color/python',
         text: 'Python',
-        tooltip: 'Pre intermedio 😊'
+        tooltip: 'Intermedio'
       },
       {
         icon: 'https://img.icons8.com/color/django',
         text: 'Django',
-        tooltip: 'Fundamentos 🤔'
+        tooltip: 'Fundamentos'
       },
       {
         icon: 'https://img.icons8.com/color/java',
         text: 'Java',
-        tooltip: 'Fundamentos 🤔'
+        tooltip: 'Fundamentos'
       },
       {
         icon: 'https://img.icons8.com/color/git',
         text: 'Git',
-        tooltip: 'Intermedio 🤓'
+        tooltip: 'Intermedio'
       },
       {
         text: 'Github',
         icon: 'https://img.icons8.com/color/github',
-        tooltip: 'Intermedio 🤓'
+        tooltip: 'Intermedio'
       },
       {
         text: 'MongoDB',
         icon: 'https://img.icons8.com/color/mongodb',
-        tooltip: 'Fundamentos 🤔'
+        tooltip: 'Fundamentos'
       },
       {
         text: 'SQL',
         icon: 'https://img.icons8.com/color/sql',
-        tooltip: 'Fundamentos 🤔'
+        tooltip: 'Fundamentos'
       },
       {
         text: 'Heroku',
         icon: 'https://img.icons8.com/color/heroku',
-        tooltip: 'Basico 🤔'
+        tooltip: 'Basico'
       },
       {
         text: 'Excel',
         icon: 'https://img.icons8.com/color/microsoft-excel',
-        tooltip: 'Intermedio 🤓'
+        tooltip: 'Intermedio'
       },
       {
         text: 'PowerPoint',
         icon: 'https://img.icons8.com/color/powerpoint',
-        tooltip: 'Intermedio 🤓'
+        tooltip: 'Intermedio'
       },
       {
         text: 'Power BI',
         icon: 'https://img.icons8.com/color/power-bi',
-        tooltip: 'Intermedio 🤓'
+        tooltip: 'Intermedio'
       }
     ]
   },
   highlights: [
     {
       type: 'good',
-      text: 'Aprendizaje constante',
+      text: 'Fanatico de la tecnologia',
+    },
+    {
+      type: 'good',
+      text: 'Inquieto, gusto de mantenerme aprendiendo',
     },
     {
       type: 'good',
@@ -199,16 +204,16 @@ let profileExample = {
     },
     {
       type: 'good',
-      text: 'Actitud positiva',
+      text: 'Con actitud positiva',
     },
     {
       type: 'bad',
-      text: 'Conformidad',
+      text: 'A veces me tiro a menos',
     },
     {
       type: 'bad',
-      text: 'Experiencia en el sector',
-    }
+      text: 'No poseo experiencia laboral en el sector (por ahora 😎)',
+    },
   ],
   languages: [
     {
@@ -223,6 +228,12 @@ let profileExample = {
     },
   ],
 }
+
+console.info('%cHola curios@!', 'color: #00ff00; background-color: black; font-size: 2em;');
+console.log('%cSi estas aqui, probablemente quieras conocer un poco mas de este desarrollo', 'color: #000; background-color: #fff; font-size: 1.1em;');
+console.log('%cPara tu comodidad, te dejare el objeto del perfil de prueba', 'color: #000; background-color: #fff; font-size: 1.1em;');
+console.log('%cEn un futuro, la pagina podra servir diferentes templates de CV a otros usuarios 😊', 'font-size: 0.8em;');
+console.log(profileExample);
 
 let dropdownDurationMS = 500;
 
@@ -261,8 +272,8 @@ const CvPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>MercadoCV | Ramon Irala</title>
-        <meta name="description" content="MercadocCV de Ramon Irala" />
+        <title>Curriculum | Ramon Irala - ML Style</title>
+        <meta name="description" content="Curriculum de Ramon Irala - ML" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

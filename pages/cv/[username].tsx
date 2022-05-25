@@ -4,11 +4,13 @@ import Head from "next/head";
 import { Header, Footer, Message, Profile } from "components";
 import { useEffect, useRef, useState } from "react";
 import useMessage from "hooks/useMessage";
+import Link from "next/link";
 
 let dropdownDurationMS = 500;
 
-export const getServerSideProps: (arg0: any) => any = async ({ params }) => {
-  let { username } =  params;
+export const getServerSideProps: (arg0: any) => any = async (context) => {
+
+  let { username } = context.params;
 
   if (!username) {
     return {
@@ -18,20 +20,19 @@ export const getServerSideProps: (arg0: any) => any = async ({ params }) => {
     };
   }
 
-  let { profile } = await fetch(`${process.env.BACK_PROFILES_URL}/api/profile?username=${username}`).then(async response => await response.json()) ?? {profile:null};
-
+  let { profile, error } = await fetch(`http://${context.req.headers.host}/api/profile?username=${username}`).then(res => res.json());
   return {
     props: {
       profile,
+      error
     },
   };
 };
 
-const CustomCvPage: NextPage<{ profile: any }> = ({ profile }) => {
+const CustomCvPage: NextPage<{ profile: any, error: any }> = ({ profile, error }) => {
   let msgVisibilityMs = 2500;
   const { message, isMsgVisible, pushMessage } = useMessage(msgVisibilityMs);
   const lastPageItem = useRef<HTMLDivElement>(null);
-
   const [showingFooter, setShowingFooter] = useState(false);
   const [isScrolledMax, setIsScrolledMax] = useState(false);
 
@@ -42,7 +43,7 @@ const CustomCvPage: NextPage<{ profile: any }> = ({ profile }) => {
 
       setIsScrolledMax(
         currentScrollY >=
-          document.body.offsetHeight * minScrolledWindowPercentage
+        document.body.offsetHeight * minScrolledWindowPercentage
       );
     };
     window.addEventListener("scroll", onScroll);
@@ -50,44 +51,55 @@ const CustomCvPage: NextPage<{ profile: any }> = ({ profile }) => {
   }, []);
 
   const toggleFooter = () => {
+    let animDurationMultiplier = 1.25
     setShowingFooter(!showingFooter);
 
     if (isScrolledMax) {
       setTimeout(() => {
         !showingFooter &&
           lastPageItem?.current?.scrollIntoView({ behavior: "smooth" });
-      }, dropdownDurationMS*1.25);
+      }, dropdownDurationMS * animDurationMultiplier);
     }
   };
 
   return (
-    <>
-      <Head>
-        <title>MercadoCV | {profile.name}</title>
-        <meta name="description" content={`MercadocCV de ${profile.name}`} />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    error
+      ? <div style={{ display: "flex", flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+        <p><b>Error {error.code}</b>: {error.message}</p>
+        <Link href="/">Volver a root </Link>
+      </div >
+      : !profile
+        ? <span style={{ display: "flex", alignItems: 'center', justifyContent: 'center', height: '100vh' }}><b>ERROR DESCONOCIDO</b></span>
+        : (<>
+          <Head>
+            <title>Curriculum | {profile.name} ML</title>
+            <meta name="description" content={`Curriculum ${profile.name} ML`} />
+            <link rel="icon" href="/favicon.ico" />
+          </Head >
 
-      <Header />
-      <Profile
-        profile={profile}
-        toggleFooter={toggleFooter}
-        pushMessage={pushMessage}
-      />
+          <Header />
+          <Profile
+            profile={profile}
+            toggleFooter={toggleFooter}
+            pushMessage={pushMessage}
+          />
 
-      {!isMsgVisible ? null : (
-        <Message message={message} durationMs={msgVisibilityMs} />
-      )}
+          {
+            !isMsgVisible ? null : (
+              <Message message={message} durationMs={msgVisibilityMs} />
+            )
+          }
 
-      <Footer
-        profileName={profile.name}
-        profileContact={profile.contact}
-        showingFooter={showingFooter}
-        toggleFooter={toggleFooter}
-      />
+          <Footer
+            profileName={profile.name}
+            profileContact={profile.contact}
+            showingFooter={showingFooter}
+            toggleFooter={toggleFooter}
+          />
 
-      <div ref={lastPageItem}></div>
-    </>
+          <div ref={lastPageItem}></div>
+        </>
+        )
   );
 };
 

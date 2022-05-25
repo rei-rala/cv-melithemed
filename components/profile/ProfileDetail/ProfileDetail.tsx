@@ -15,6 +15,7 @@ type History = {
 type AcademicHistory = History & {
   description: string;
   condition: string;
+  actual: boolean;
 }
 
 type ProfessionalHistory = History & {
@@ -48,14 +49,6 @@ const bothProfileJSX = `
     background: ${COLORS.blueAlt};
     color: ${COLORS.blue};
   }
-
-  @media (min-width: 768) {
-    section article > div  {
-      flex-direction: row;
-      flex-wrap: wrap;
-      background: red;
-    } 
-  }
 `
 
 const AcademicProfileDetail: React.FC<{ academicHistory: AcademicHistory[] }> = ({ academicHistory }) => {
@@ -64,16 +57,18 @@ const AcademicProfileDetail: React.FC<{ academicHistory: AcademicHistory[] }> = 
       <h3><FontAwesomeIcon icon={faGraduationCap} width='12px' /> Academico</h3>
       <div>
         {academicHistory.map((history, index) => (
-            <div key={`academic-${index}`}>
-              <b>{history.title}</b>
-              <span>{history.where}</span>
-              <span>{formatDate(history.from, {sep: ' '}).MMyyyy} {
-                history?.condition.includes('curso') 
+          <div key={`academic-${index}`}>
+            <b>{history.title}</b>
+            <span>{history.where}</span>
+            <span>
+              {!history?.actual ? '' : 'Desde '}
+              {formatDate(history.from, { sep: ' ' }).MMyyyy} {
+                history?.condition.includes('curso')
                   ? ''
-                  : `- ${formatDate(history.to, {sep:' '}).MMyyyy}`
+                  : `- ${formatDate(history.to, { sep: ' ' }).MMyyyy}`
               }</span>
-              <>{history.condition ? <i>{history.condition}</i> : null}</>
-            </div>
+            <>{history.condition ? <i>{history.condition}</i> : null}</>
+          </div>
         ))}
       </div>
     </article>
@@ -86,15 +81,15 @@ const ProfessionalHistory: React.FC<{ professionalHistory: ProfessionalHistory[]
       <h3><FontAwesomeIcon icon={faSuitcase} width='12px' /> Laboral</h3>
       <div>
         {professionalHistory.map((prof, index) => (
-            <div key={`profs-${index}`}>
-              <b>{prof.title} {prof.seniority}</b>
-              <span>{prof.where}</span>
-              {
-                prof.actual
-                  ? <span>Desde {formatDate(prof.from, {sep: ' '}).MMyyyy}</span>
-                  : <span>{formatDate(prof.from, {sep: ' '}).MMyyyy} - {formatDate(prof.to, {sep: ' '}).MMyyyy}</span>
-              }
-            </div>
+          <div key={`profs-${index}`}>
+            <span><b>{prof.title}</b> {prof.seniority}</span>
+            <span>{prof.where}</span>
+            {
+              prof.actual
+                ? <span>Desde {formatDate(prof.from, { sep: ' ' }).MMyyyy}</span>
+                : <span>{formatDate(prof.from, { sep: ' ' }).MMyyyy} - {formatDate(prof.to, { sep: ' ' }).MMyyyy}</span>
+            }
+          </div>
         ))}
       </div>
 
