@@ -13,38 +13,46 @@ const BurgerMenu: React.FC = () => {
 
       <style jsx>{`
         div {
-          display: flex;
-          flex-flow: column nowrap;
-          justify-content: space-around;
-          align-items: center;
-          
           min-width: ${MEASURES.longer};
           min-height: ${MEASURES.longer};
 
-          padding: calc(${MEASURES.padding}*1.5);
-          
           aspect-ratio: 1;
           cursor: pointer;
+          position: relative
         }
         div span {
-          width: 100%;
-          height: calc(${MEASURES.borders} *2);
+          position: absolute;
+
+          height: ${isMenuOpen ? `calc(${MEASURES.shortest}*1.5)` : `calc(${MEASURES.shortest}/1.5)`};
+          width: 75%;
+          border-radius: ${isMenuOpen ? `${MEASURES.shortest}` : `0`};
           background: ${COLORS.light};
 
-          transition: all .3s ease-in-out;
-          position: relative
+          transition-timing-function: ease-in-out;
+          transition: 
+            transform 0.3s ${isMenuOpen ? '0.3s' : ''},
+            top 0.3s ${isMenuOpen ? '' : '0.3s'},
+            width 0.15s ${isMenuOpen ? '' : '0.45s'},
+            height 0.3s 0.3s,
+            border-radius 0.3s 0.3s;
         }
 
         div span:nth-child(1) {
-          transform: ${isMenuOpen ? `rotate(45deg) ` : "rotate(0deg)"};
-          top: ${isMenuOpen ? `calc((${MEASURES.longer} + ${MEASURES.padding}) /6.25)` : "0"};
+          top: calc( ${isMenuOpen ? `50%` : `100% / 4`} );
+          left: 50%;
+          transform: translate(-50%, -50%) ${isMenuOpen ? `rotate(45deg)` : ""};
         }
         div span:nth-child(2) {
-          opacity: ${isMenuOpen ? "0" : "1"};
+          ${isMenuOpen ? 'width: 0;' :''}
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
         }
         div span:nth-child(3) {
-          transform: ${isMenuOpen ? `rotate(-45deg)` : "rotate(0deg)"};
-          bottom: ${isMenuOpen ? `calc( (${MEASURES.longer} + ${MEASURES.padding}) /6.25)` : "0"};
+          transform: rotate(-45deg) ${isMenuOpen ? "rotate(0deg) translate(-50%, -50%);" : ''};
+          top: calc( ${isMenuOpen ? `50%` : `100% / 4 * 3`} );
+          left: 50%;
+          transform: translate(-50%, -50%) ${isMenuOpen ? `rotate(-45deg)` : ""};
         }
 
         @media (min-width: 768px) {
