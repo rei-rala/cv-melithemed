@@ -16,15 +16,16 @@ export type Highlight = {
 
 interface IProfile {
   profile: any,
+  showingFooter: boolean,
   pushMessage: (message: string) => void
   toggleFooter: () => void,
 }
 
 
-const Profile: React.FC<IProfile> = ({ profile, toggleFooter, pushMessage }) => {
+const Profile: React.FC<IProfile> = ({ profile, showingFooter, toggleFooter, pushMessage }) => {
   return (
     <>
-      <ProfileMain name={profile.name} currently={profile.currently} headline={profile.headline} images={profile.images} toggleFooter={toggleFooter} pushMessage={pushMessage} />
+      <ProfileMain name={profile.name} currently={profile.currently} headline={profile.headline} images={profile.images} pushMessage={pushMessage} showingFooter={showingFooter} toggleFooter={toggleFooter} />
       <ProfileAbout about={profile.about} />
       <ProfileHighlights highlights={profile.highlights} />
       <ProfileDetail academicHistory={profile.history.academic} professionalHistory={profile.history.professional} />

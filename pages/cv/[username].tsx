@@ -6,7 +6,6 @@ import { useEffect, useRef, useState } from "react";
 import useMessage from "hooks/useMessage";
 import Link from "next/link";
 
-let dropdownDurationMS = 500;
 
 export const getServerSideProps: (arg0: any) => any = async (context) => {
 
@@ -30,6 +29,7 @@ export const getServerSideProps: (arg0: any) => any = async (context) => {
 };
 
 const CustomCvPage: NextPage<{ profile: any, error: any }> = ({ profile, error }) => {
+  let dropdownDurationMS = 500;
   let msgVisibilityMs = 2500;
   const { message, isMsgVisible, pushMessage } = useMessage(msgVisibilityMs);
   const lastPageItem = useRef<HTMLDivElement>(null);
@@ -51,14 +51,15 @@ const CustomCvPage: NextPage<{ profile: any, error: any }> = ({ profile, error }
   }, []);
 
   const toggleFooter = () => {
-    let animDurationMultiplier = 1.25
+    let timeoutMultiplier = 1.3
+    let scrollTimeout = dropdownDurationMS * timeoutMultiplier
     setShowingFooter(!showingFooter);
 
     if (isScrolledMax) {
       setTimeout(() => {
         !showingFooter &&
           lastPageItem?.current?.scrollIntoView({ behavior: "smooth" });
-      }, dropdownDurationMS * animDurationMultiplier);
+      }, scrollTimeout);
     }
   };
 
@@ -78,11 +79,7 @@ const CustomCvPage: NextPage<{ profile: any, error: any }> = ({ profile, error }
           </Head >
 
           <Header />
-          <Profile
-            profile={profile}
-            toggleFooter={toggleFooter}
-            pushMessage={pushMessage}
-          />
+          <Profile profile={profile} showingFooter={showingFooter} toggleFooter={toggleFooter} pushMessage={pushMessage} />
 
           {
             !isMsgVisible ? null : (

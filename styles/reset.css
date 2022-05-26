@@ -113,7 +113,9 @@ aside {
   text-align: center;
   transition: margin 1000ms;
 }
-
+aside p {
+  font-size: 0.7rem !important;
+}
 h1 {
   font-size: var(--measure-long);
 }

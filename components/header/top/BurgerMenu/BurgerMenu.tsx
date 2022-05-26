@@ -22,12 +22,14 @@ const BurgerMenu: React.FC = () => {
         }
         div span {
           position: absolute;
+          left: 50%;
 
-          height: ${isMenuOpen ? `calc(${MEASURES.shortest}*1.5)` : `calc(${MEASURES.shortest}/1.5)`};
-          width: 75%;
+          height: ${isMenuOpen ? `${MEASURES.shortest}` : `calc(${MEASURES.borders}*1.25)`};
+          width: 80%;
           border-radius: ${isMenuOpen ? `${MEASURES.shortest}` : `0`};
           background: ${COLORS.light};
 
+          transform: translate(-50%, -50%);
           transition-timing-function: ease-in-out;
           transition: 
             transform 0.3s ${isMenuOpen ? '0.3s' : ''},
@@ -38,21 +40,16 @@ const BurgerMenu: React.FC = () => {
         }
 
         div span:nth-child(1) {
-          top: calc( ${isMenuOpen ? `50%` : `100% / 4`} );
-          left: 50%;
-          transform: translate(-50%, -50%) ${isMenuOpen ? `rotate(45deg)` : ""};
+          top: ${isMenuOpen ? `50%` : `25%`};
+          ${isMenuOpen ? `transform: translate(-50%, -50%) rotate(45deg);` : ""}
         }
         div span:nth-child(2) {
           ${isMenuOpen ? 'width: 0;' :''}
           top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
         }
         div span:nth-child(3) {
-          transform: rotate(-45deg) ${isMenuOpen ? "rotate(0deg) translate(-50%, -50%);" : ''};
-          top: calc( ${isMenuOpen ? `50%` : `100% / 4 * 3`} );
-          left: 50%;
-          transform: translate(-50%, -50%) ${isMenuOpen ? `rotate(-45deg)` : ""};
+          top: ${isMenuOpen ? `50%` : '75%'};
+          ${isMenuOpen ? `transform: translate(-50%, -50%) rotate(-45deg);` : ""}
         }
 
         @media (min-width: 768px) {

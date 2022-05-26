@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Button, ImgSlider } from "components";
 
@@ -19,13 +19,27 @@ interface ProfileMainProps {
   currently: string;
   headline: string;
   images: string[];
-  pushMessage: (message: string) => void;
+  showingFooter: boolean;
   toggleFooter: () => void;
+  pushMessage: (message: string) => void;
 }
 
-const ProfileMain: React.FC<ProfileMainProps> = ({ name, currently, headline, images, toggleFooter, pushMessage }) => {
+let overwriteFooterCss = `
+  @keyframes blinkColor {
+    100% {
+      color: ${COLORS.danger};
+    }
+  }
+    footer div:first-child {
+      animation: blinkColor 0.25s infinite ease;
+    }
+  `
+
+
+const ProfileMain: React.FC<ProfileMainProps> = ({ name, currently, headline, images, showingFooter, toggleFooter, pushMessage }) => {
   const [isInFavourites, setIsInFavourites] = useState(false)
   const toggleIsInFavourites = () => setIsInFavourites(!isInFavourites)
+  const [toggledFromMain, setToggledFromMain] = useState(false)
 
   const copyUrlToClipboard = () => {
     const host = window.location.host;
@@ -33,12 +47,26 @@ const ProfileMain: React.FC<ProfileMainProps> = ({ name, currently, headline, im
     const copyText = host + path;
 
     try {
-      copy(copyText, {format: "text/plain"})
+      copy(copyText, { format: "text/plain" })
       pushMessage('Link copiado a portapapeles!')
     } catch (err: any) {
       pushMessage('Error al copiar a portapapeles')
     }
   };
+
+  const toggleFooterFromMain = () => {
+    toggleFooter()
+    if (!showingFooter) {
+      setToggledFromMain(true)
+    }
+  }
+
+  useEffect(() => {
+    let blinkTimeout = setTimeout(() => {
+      setToggledFromMain(false)
+    }, 1000)
+    return () => clearTimeout(blinkTimeout)
+  }, [toggledFromMain])
 
   return (
     <main>
@@ -65,7 +93,7 @@ const ProfileMain: React.FC<ProfileMainProps> = ({ name, currently, headline, im
       <div>
         <h2>Disponible</h2>
         <div>
-          <Button variant="info" addStyles={{ padding: '0.75rem' }} onClick={toggleFooter}>Contactar</Button>
+          <Button variant="info" addStyles={{ padding: '0.75rem' }} onClick={toggleFooterFromMain}>Contactar</Button>
         </div>
 
         <div>
@@ -199,6 +227,8 @@ const ProfileMain: React.FC<ProfileMainProps> = ({ name, currently, headline, im
             border-radius: 0 0 ${MEASURES.near} ${MEASURES.near};
           }
         }
+
+        ${toggledFromMain ? overwriteFooterCss : ''}
       `}</style>
     </main>
   );

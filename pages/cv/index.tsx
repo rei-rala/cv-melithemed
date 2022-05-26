@@ -235,10 +235,9 @@ console.log('%cPara tu comodidad, te dejare el objeto del perfil de prueba', 'co
 console.log('%cEn un futuro, la pagina podra servir diferentes templates de CV a otros usuarios 😊', 'font-size: 0.8em;');
 console.log(profileExample);
 
-let dropdownDurationMS = 500;
-
 
 const CvPage: NextPage = () => {
+  let dropdownDurationMS = 500;
   let msgVisibilityMs = 2500;
   const { message, isMsgVisible, pushMessage } = useMessage(msgVisibilityMs)
   const lastPageItem = useRef<HTMLDivElement>(null)
@@ -260,14 +259,17 @@ const CvPage: NextPage = () => {
 
 
   const toggleFooter = () => {
+    let timeoutMultiplier = 1.3
+    let scrollTimeout = dropdownDurationMS * timeoutMultiplier
     setShowingFooter(!showingFooter);
 
     if (isScrolledMax) {
       setTimeout(() => {
-        !showingFooter && lastPageItem?.current?.scrollIntoView({ behavior: "smooth" })
-      }, dropdownDurationMS);
+        !showingFooter &&
+          lastPageItem?.current?.scrollIntoView({ behavior: "smooth" });
+      }, scrollTimeout);
     }
-  }
+  };
 
   return (
     <>
@@ -278,7 +280,7 @@ const CvPage: NextPage = () => {
       </Head>
 
       <Header />
-      <Profile profile={profileExample} toggleFooter={toggleFooter} pushMessage={pushMessage} />
+      <Profile profile={profileExample} showingFooter={showingFooter} toggleFooter={toggleFooter} pushMessage={pushMessage} />
 
       {
         !isMsgVisible
