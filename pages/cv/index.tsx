@@ -6,7 +6,8 @@ import { useEffect, useRef, useState } from "react";
 import useMessage from "hooks/useMessage";
 
 let profileExample = {
-  username: "ramonirala",
+  username: "ramonirala",// this will be pointed from ownerId, Cv model won't have username property
+  ownerId: '',
   name: "Ramon Irala",
   currently: "En busqueda laboral activa",
   headline: "Desarrollador fullstack trainee",
@@ -16,7 +17,7 @@ let profileExample = {
   Por mi parte aprendi desarrollo web gracias a diversos cursos e internet.
   En el presente me enfoco en capacitarme, practicar con la realizacion de proyectos y seguir aprendiendo los procesos y buenas prácticas en esta materia.
   Programo mayormente en JavaScript y un poco en Python. Utilizo React y Next.js como framework de Frontend web. 
-  Para el backend manejo  Node.js, Express y Flask.
+  Para el backend manejo  Node.js, Express y algo de Django y Flask.
   Tambien utilizo tecnologias como TypeScript, SQL, MongoDB, jQuery, SASS, entre otros.
   
   Me gusta describirme como una persona analitica, detallista y entusiasta que gusta tanto de buscar puntos débiles y aspectos de mejora y desarrollar soluciones.
@@ -29,37 +30,34 @@ let profileExample = {
   images: [
     "https://media-exp1.licdn.com/dms/image/C4D03AQHukYfNFf_aKw/profile-displayphoto-shrink_800_800/0/1616921269118?e=1658361600&v=beta&t=MXZNh40o7NUouUbLCTceBFCfkhHHZJtv568I01X2CPA",
   ],
-  history: {
-    academic: [
-      {
-        where: "Universidad Argentina de la Empresa",
-        from: new Date("2020-01-31"),
-        to: new Date("2024-12-31"),
-        title: "Tecnicatura Universitaria en Desarrollo de Software",
-        condition: "En curso",
-        description: '',
-        actual: true,
-      },
-    ],
-    professional: [
-      {
-        where: "Garantizar SGR",
-        from: new Date("2017-12-31"),
-        to: new Date("2022-12-31"),
-        title: 'Analista de Riesgo',
-        seniority: 'Semi Senior',
-        actual: true,
-      },
-      {
-        where: "KPMG",
-        from: new Date("2015-12-31"),
-        to: new Date("2017-08-31"),
-        title: 'Auditor Contable',
-        seniority: 'Junior',
-        actual: false,
-      },
-    ]
-  },
+  academic: [
+    {
+      where: "Universidad Argentina de la Empresa",
+      from: new Date("2020-01-31"),
+      to: new Date("2024-12-31"),
+      title: "Tecnicatura Universitaria en Desarrollo de Software",
+      condition: "En curso",
+      description: '',
+      isCurrent: true,
+    },
+  ],
+  professional: [
+    {
+      where: "Garantizar SGR",
+      from: new Date("2017-12-31"),
+      to: new Date("2022-12-31"),
+      title: 'Analista de Riesgo',
+      seniority: 'Semi Senior',
+      isCurrent: true,
+    },
+    {
+      where: "KPMG",
+      from: new Date("2015-12-31"),
+      to: new Date("2017-08-31"),
+      title: 'Auditor Contable',
+      seniority: 'Junior',
+    },
+  ],
   contact: [
     {
       type: 'LinkedIn',
@@ -204,6 +202,10 @@ let profileExample = {
     },
     {
       type: 'good',
+      text: 'Siempre dispuesto a demostrar lo que soy capaz de lograr',
+    },
+    {
+      type: 'good',
       text: 'Con actitud positiva',
     },
     {
@@ -274,8 +276,8 @@ const CvPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Curriculum | Ramon Irala - ML Style</title>
-        <meta name="description" content="Curriculum de Ramon Irala - ML" />
+        <title>Curriculum | Ramon Irala</title>
+        <meta name="description" content="Curriculum de Ramon Irala con estilo MeLi" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

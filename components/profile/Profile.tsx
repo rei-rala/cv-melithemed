@@ -28,7 +28,7 @@ const Profile: React.FC<IProfile> = ({ profile, showingFooter, toggleFooter, pus
       <ProfileMain name={profile.name} currently={profile.currently} headline={profile.headline} images={profile.images} pushMessage={pushMessage} showingFooter={showingFooter} toggleFooter={toggleFooter} />
       <ProfileAbout about={profile.about} />
       <ProfileHighlights highlights={profile.highlights} />
-      <ProfileDetail academicHistory={profile.history.academic} professionalHistory={profile.history.professional} />
+      <ProfileDetail academicHistory={profile.academic} professionalHistory={profile.professional} />
       <ProfileLanguages languages={profile.languages} />
       <ProfileCustom customSection={{ name: profile.name, ...profile.customSection, }} />
       <aside>

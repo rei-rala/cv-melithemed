@@ -73,8 +73,8 @@ const CustomCvPage: NextPage<{ profile: any, error: any }> = ({ profile, error }
         ? <span style={{ display: "flex", alignItems: 'center', justifyContent: 'center', height: '100vh' }}><b>ERROR DESCONOCIDO</b></span>
         : (<>
           <Head>
-            <title>Curriculum | {profile.name} ML</title>
-            <meta name="description" content={`Curriculum ${profile.name} ML`} />
+            <title> Curriculum | {profile.name} </title>
+            <meta name="description" content={`Curriculum ${profile.name} con estilo MeLi`} />
             <link rel="icon" href="/favicon.ico" />
           </Head >
 
