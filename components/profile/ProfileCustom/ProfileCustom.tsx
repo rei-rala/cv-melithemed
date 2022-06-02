@@ -104,7 +104,7 @@ const ProfileCustom: React.FC<{ customSection: ICustomSection }> = ({ customSect
           display: flex;
         }
 
-        @media only screen and (hover: none) and (pointer: coarse){
+        @media (only screen and (hover: none) and (pointer: coarse)) or (max-width: 500px) {
           p {
             display: none;
           }

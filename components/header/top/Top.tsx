@@ -14,6 +14,7 @@ const Top: React.FC = () => {
 
       <style jsx>{`
         div {
+          margin: auto;
           display: flex;
           flex-flow: row nowrap;
           justify-content: center;
@@ -21,9 +22,10 @@ const Top: React.FC = () => {
           gap: calc(${MEASURES.padding} * 2);
 
           padding: calc(${MEASURES.padding} * 2);
+          min-width: 45%;
           width: 100%;
+          max-width: 800px;
           max-height: calc(${MEASURES.longest} * 1.2);
-
           border-bottom: ${MEASURES.borders} inset ${COLORS.lightGray};
 
           overflow: hidden;
@@ -32,6 +34,7 @@ const Top: React.FC = () => {
         @media (min-width: 768px) {
           div {
             max-height: calc(${MEASURES.longest} * 1.5);
+            border: none;
           }
         }
 
