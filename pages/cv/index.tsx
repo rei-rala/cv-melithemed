@@ -28,6 +28,7 @@ let profileExample = {
   Github: https://github.com/rei-rala
   Correo de contacto: ramonirala@outlook.com`,
   images: [
+    "https://media-exp1.licdn.com/dms/image/C4D03AQECDCVkG6IfxQ/profile-displayphoto-shrink_400_400/0/1668085573452?e=1675296000&v=beta&t=2yNYDEGdkmkpVUewQM2bu8ixa7Du1cOn-4PMIghxj44",
     "https://media-exp1.licdn.com/dms/image/C4D03AQHukYfNFf_aKw/profile-displayphoto-shrink_800_800/0/1616921269118?e=1658361600&v=beta&t=MXZNh40o7NUouUbLCTceBFCfkhHHZJtv568I01X2CPA",
   ],
   academic: [
