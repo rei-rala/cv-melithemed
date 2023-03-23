@@ -8,6 +8,7 @@ const nextConfig = {
       // OK Domains
       "img.icons8.com",
       "media-exp1.licdn.com",
+      "media.licdn.com",
       "via.placeholder.com"
     ],
   },

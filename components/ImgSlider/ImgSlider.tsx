@@ -18,6 +18,7 @@ const ImgSlider: React.FC<IImageSliderProps> = ({ images, altText }) => {
     next: 1
   })
   const [changedImage, setChangedImage] = useState(false)
+  let isMultiImage = images.length > 1;
 
   const getPrevIndex = (currentIndex: number) => currentIndex < 1 ? images.length - 1 : currentIndex - 1
   const getNextIndex = (currentIndex: number) => currentIndex < images.length - 1 ? currentIndex + 1 : 0
@@ -67,7 +68,7 @@ const ImgSlider: React.FC<IImageSliderProps> = ({ images, altText }) => {
 
   return (
     <figure className={styles.container}>
-      {images.length > 1 ? <button className={styles.switcher} onClick={handleClick} value={'prev'} > <FontAwesomeIcon icon={faAngleRight} width='18px' /> </button> : null}
+      {isMultiImage && <button className={styles.switcher} onClick={handleClick} value={'prev'} > <FontAwesomeIcon icon={faAngleRight} width='18px' /> </button>}
       {
         images.map((img, index) =>
           <figure
@@ -84,8 +85,8 @@ const ImgSlider: React.FC<IImageSliderProps> = ({ images, altText }) => {
           </figure>
         )
       }
-      <span className={`${styles.indicator} ${!!changedImage ? styles.emphasize : ''}`}> {(showIndex.current + 1)}/{images.length} </span>
-      {images.length > 1 ? <button className={styles.switcher} onClick={handleClick} value={'next'} > <FontAwesomeIcon icon={faAngleRight} width='18px' /></button> : null}
+      {isMultiImage && <span className={`${styles.indicator} ${!!changedImage ? styles.emphasize : ''}`}> {(showIndex.current + 1)}/{images.length} </span>}
+      {isMultiImage && <button className={styles.switcher} onClick={handleClick} value={'next'} > <FontAwesomeIcon icon={faAngleRight} width='18px' /></button>}
     </figure>
   )
 }
