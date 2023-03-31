@@ -9,8 +9,7 @@ let profileExample = {
   username: "ramonirala",// this will be pointed from ownerId, Cv model won't have username property
   ownerId: '',
   name: "Ramon Irala",
-  currently: "En busqueda laboral activa",
-  headline: "Desarrollador fullstack trainee",
+  headline: "Fullstack Developer Junior",
   about: `Fui estudiante de la carrera de Contador Publico en la Universidad de Buenos Aires hasta el año 2020.
   Actualmente estudio la Tecnicatura Universitaria en Desarrollo de Software en la UADE, tras la cual continuare con la Ingenieria en Informatica.
   
@@ -44,11 +43,18 @@ let profileExample = {
   professional: [
     {
       where: "Garantizar SGR",
+      from: new Date("2022-12-31"),
+      to: new Date(),
+      title: 'Full Stack Developer',
+      seniority: 'Junior',
+      isCurrent: true,
+    },
+    {
+      where: "Garantizar SGR",
       from: new Date("2017-12-31"),
       to: new Date("2022-12-31"),
       title: 'Analista de Riesgo',
       seniority: 'Semi Senior',
-      isCurrent: true,
     },
     {
       where: "KPMG",
@@ -111,6 +117,10 @@ let profileExample = {
         tooltip: 'Intermedio'
       },
       {
+        text: 'C#',
+        icon: 'https://img.icons8.com/color/cs',
+      },
+      {
         icon: 'https://img.icons8.com/color/nodejs',
         text: 'Node.js',
         tooltip: 'Intermedio'
@@ -161,26 +171,6 @@ let profileExample = {
         icon: 'https://img.icons8.com/color/sql',
         tooltip: 'Fundamentos'
       },
-      {
-        text: 'Heroku',
-        icon: 'https://img.icons8.com/color/heroku',
-        tooltip: 'Basico'
-      },
-      {
-        text: 'Excel',
-        icon: 'https://img.icons8.com/color/microsoft-excel',
-        tooltip: 'Intermedio'
-      },
-      {
-        text: 'PowerPoint',
-        icon: 'https://img.icons8.com/color/powerpoint',
-        tooltip: 'Intermedio'
-      },
-      {
-        text: 'Power BI',
-        icon: 'https://img.icons8.com/color/power-bi',
-        tooltip: 'Intermedio'
-      }
     ]
   },
   highlights: [
