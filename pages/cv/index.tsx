@@ -6,29 +6,22 @@ import { useEffect, useRef, useState } from "react";
 import useMessage from "hooks/useMessage";
 
 let profileExample = {
-  username: "ramonirala",// this will be pointed from ownerId, Cv model won't have username property
-  ownerId: '',
+  username: "ramonirala", // this will be pointed from ownerId, Cv model won't have username property
+  ownerId: "",
   name: "Ramon Irala",
-  currently: "En busqueda laboral activa",
-  headline: "Desarrollador fullstack trainee",
-  about: `Fui estudiante de la carrera de Contador Publico en la Universidad de Buenos Aires hasta el año 2020.
-  Actualmente estudio la Tecnicatura Universitaria en Desarrollo de Software en la UADE, tras la cual continuare con la Ingenieria en Informatica.
+  headline: "Fullstack Developer Junior",
+  about: `I was a student in the Public Accountant degree program at the University of Buenos Aires until 2020. Currently, I am studying the University Technical Degree in Software Development at UADE, after which I will continue with a degree in Computer Engineering.
+
+  Personally, I learned web development through various courses and the internet. At present, I am focused on learning, practicing with project development, and continuing to learn about the processes and best practices in this field. I mainly program in JavaScript and some Python. I use React and Next.js as web frontend frameworks. For backend, I use Node.js, Express, and some Django and Flask. I also use technologies such as TypeScript, SQL, MongoDB, jQuery, SASS, among others.
   
-  Por mi parte aprendi desarrollo web gracias a diversos cursos e internet.
-  En el presente me enfoco en capacitarme, practicar con la realizacion de proyectos y seguir aprendiendo los procesos y buenas prácticas en esta materia.
-  Programo mayormente en JavaScript y un poco en Python. Utilizo React y Next.js como framework de Frontend web. 
-  Para el backend manejo  Node.js, Express y algo de Django y Flask.
-  Tambien utilizo tecnologias como TypeScript, SQL, MongoDB, jQuery, SASS, entre otros.
+  I like to describe myself as an analytical, detail-oriented, and enthusiastic person who enjoys identifying weaknesses and areas for improvement and developing solutions. I am interested in furthering my knowledge in front-end development, learning backend development, and blockchain.
   
-  Me gusta describirme como una persona analitica, detallista y entusiasta que gusta tanto de buscar puntos débiles y aspectos de mejora y desarrollar soluciones.
-  Me interesa continuar profundizando front end y aprender desarrollo backend y blockchain
-  
-  Mi portfolio se encuentra en desarrollo, pero puede visitarse mi github para mas o menos saber en que estoy trabajando
+  My portfolio is still in development, but my Github can be visited to get an idea of what I am currently working on.
   
   Github: https://github.com/rei-rala
-  Correo de contacto: ramonirala@outlook.com`,
+  Email: ramonirala@outlook.com`,
   images: [
-    "https://media.licdn.com/dms/image/C4D03AQECDCVkG6IfxQ/profile-displayphoto-shrink_800_800/0/1668085573452?e=1684972800&v=beta&t=tngZWhkZuDfBWn-4Qh2_vO4EKR0Xmp1bcfW7opOL3-M"
+    "https://media.licdn.com/dms/image/C4D03AQECDCVkG6IfxQ/profile-displayphoto-shrink_800_800/0/1668085573452?e=1684972800&v=beta&t=tngZWhkZuDfBWn-4Qh2_vO4EKR0Xmp1bcfW7opOL3-M",
   ],
   academic: [
     {
@@ -37,232 +30,230 @@ let profileExample = {
       to: new Date("2024-12-31"),
       title: "Tecnicatura Universitaria en Desarrollo de Software",
       condition: "En curso",
-      description: '',
+      description: "",
       isCurrent: true,
     },
   ],
   professional: [
     {
       where: "Garantizar SGR",
+      from: new Date("2022-12-31"),
+      title: "Full Stack Developer",
+      seniority: "Junior",
+      isCurrent: true,
+    },
+    {
+      where: "Garantizar SGR",
       from: new Date("2017-12-31"),
       to: new Date("2022-12-31"),
-      title: 'Analista de Riesgo',
-      seniority: 'Semi Senior',
-      isCurrent: true,
+      title: "Credit Risk Analyst",
+      seniority: "Semi Senior",
     },
     {
       where: "KPMG",
       from: new Date("2015-12-31"),
       to: new Date("2017-08-31"),
-      title: 'Auditor Contable',
-      seniority: 'Junior',
+      title: "Audit",
+      seniority: "Junior",
     },
   ],
   contact: [
     {
-      type: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/ramon-irala-220362110/',
+      type: "LinkedIn",
+      url: "https://www.linkedin.com/in/ramon-irala-220362110/",
     },
     {
-      type: 'GitHub',
-      url: 'https://github.com/rei-rala'
+      type: "GitHub",
+      url: "https://github.com/rei-rala",
     },
     {
-      type: 'e-Mail',
-      url: 'ramonirala@outlook.com'
+      type: "e-Mail",
+      url: "ramonirala@outlook.com",
     },
     {
-      type: 'Portfolio',
-      url: ''
-    }
+      type: "Portfolio",
+      url: "",
+    },
   ],
   customSection: {
-    title: 'Tecnologias',
-    hover: 'Conocimientos',
+    title: "Tech Stack",
+    hover: "Experience",
     lines: [
       {
-        text: 'HTML5',
-        icon: 'https://img.icons8.com/color/html-5',
-        tooltip: 'Avanzado'
+        text: "HTML5",
+        icon: "https://img.icons8.com/color/html-5",
+        tooltip: "+2 years of experience",
       },
       {
-        text: 'CSS3',
-        icon: 'https://img.icons8.com/color/css3',
-        tooltip: 'Avanzado'
+        text: "CSS3",
+        icon: "https://img.icons8.com/color/css3",
+        tooltip: "+2 years of experience",
       },
       {
-        text: 'SASS',
-        icon: 'https://img.icons8.com/color/sass',
-        tooltip: 'Intermedio'
+        text: "SASS",
+        icon: "https://img.icons8.com/color/sass",
+        tooltip: "+2 years of experience",
       },
       {
-        icon: 'https://img.icons8.com/color/javascript',
-        text: 'JavaScript',
-        tooltip: 'Avanzado'
+        icon: "https://img.icons8.com/color/javascript",
+        text: "JavaScript",
+        tooltip: "+2 years of experience",
       },
       {
-        icon: 'https://img.icons8.com/color/react-native',
-        text: 'React',
-        tooltip: 'Avanzado'
+        icon: "https://img.icons8.com/color/react-native",
+        text: "React",
+        tooltip: "+2 years of experience",
       },
       {
-        text: 'Next.js',
-        icon: 'https://img.icons8.com/color/nextjs',
-        tooltip: 'Intermedio'
+        text: "Next.js",
+        icon: "https://img.icons8.com/color/nextjs",
+        tooltip: "a year of experience",
       },
       {
-        icon: 'https://img.icons8.com/color/nodejs',
-        text: 'Node.js',
-        tooltip: 'Intermedio'
+        text: "C#",
+        icon: "https://img.icons8.com/color/cs",
+        tooltip: "a year of experience",
       },
       {
-        text: 'Express',
-        icon: 'https://img.icons8.com/color/express',
-        tooltip: 'Intermedio'
+        icon: "https://img.icons8.com/color/nodejs",
+        text: "Node.js",
+        tooltip: "+1 years of experience",
       },
       {
-        text: 'Firebase',
-        icon: 'https://img.icons8.com/color/firebase',
-        tooltip: 'Intermedio'
-      },
-
-      {
-        icon: 'https://img.icons8.com/color/python',
-        text: 'Python',
-        tooltip: 'Intermedio'
+        text: "Express",
+        icon: "https://img.icons8.com/color/express",
+        tooltip: "+1 years of experience",
       },
       {
-        icon: 'https://img.icons8.com/color/django',
-        text: 'Django',
-        tooltip: 'Fundamentos'
+        text: "Firebase",
+        icon: "https://img.icons8.com/color/firebase",
+        tooltip: "Basic",
       },
       {
-        icon: 'https://img.icons8.com/color/java',
-        text: 'Java',
-        tooltip: 'Fundamentos'
+        icon: "https://img.icons8.com/color/python",
+        text: "Python",
+        tooltip: "",
       },
       {
-        icon: 'https://img.icons8.com/color/git',
-        text: 'Git',
-        tooltip: 'Intermedio'
+        icon: "https://img.icons8.com/color/django",
+        text: "Django",
+        tooltip: "",
       },
       {
-        text: 'Github',
-        icon: 'https://img.icons8.com/color/github',
-        tooltip: 'Intermedio'
+        icon: "https://img.icons8.com/color/java",
+        text: "Java",
+        tooltip: "",
       },
       {
-        text: 'MongoDB',
-        icon: 'https://img.icons8.com/color/mongodb',
-        tooltip: 'Fundamentos'
+        icon: "https://img.icons8.com/color/git",
+        text: "Git",
+        tooltip: "+2 years of experience",
       },
       {
-        text: 'SQL',
-        icon: 'https://img.icons8.com/color/sql',
-        tooltip: 'Fundamentos'
+        text: "Github",
+        icon: "https://img.icons8.com/color/github",
+        tooltip: "Using since learned GIT",
       },
       {
-        text: 'Heroku',
-        icon: 'https://img.icons8.com/color/heroku',
-        tooltip: 'Basico'
+        text: "MongoDB",
+        icon: "https://img.icons8.com/color/mongodb",
+        tooltip: "A year of experience",
       },
       {
-        text: 'Excel',
-        icon: 'https://img.icons8.com/color/microsoft-excel',
-        tooltip: 'Intermedio'
+        text: "SQL",
+        icon: "https://img.icons8.com/color/sql",
+        tooltip: "A year of experience",
       },
-      {
-        text: 'PowerPoint',
-        icon: 'https://img.icons8.com/color/powerpoint',
-        tooltip: 'Intermedio'
-      },
-      {
-        text: 'Power BI',
-        icon: 'https://img.icons8.com/color/power-bi',
-        tooltip: 'Intermedio'
-      }
-    ]
+    ],
   },
   highlights: [
     {
-      type: 'good',
-      text: 'Fanatico de la tecnologia',
+      type: "good",
+      text: "Technology enthusiast",
     },
     {
-      type: 'good',
-      text: 'Inquieto, gusto de mantenerme aprendiendo',
+      type: "good",
+      text: "Inquisitive, enjoy keeping myself learning",
     },
     {
-      type: 'good',
-      text: 'Detallista',
+      type: "good",
+      text: "Detail-oriented",
     },
     {
-      type: 'good',
-      text: 'Altamente dedicado',
+      type: "good",
+      text: "Highly dedicated",
     },
     {
-      type: 'good',
-      text: 'Siempre dispuesto a demostrar lo que soy capaz de lograr',
+      type: "good",
+      text: "Always willing to demonstrate what I am capable of achieving",
     },
     {
-      type: 'good',
-      text: 'Con actitud positiva',
+      type: "good",
+      text: "Positive attitude",
     },
     {
-      type: 'bad',
-      text: 'A veces me tiro a menos',
-    },
-    {
-      type: 'bad',
-      text: 'No poseo experiencia laboral en el sector (por ahora 😎)',
+      type: "bad",
+      text: "Sometimes I underestimate myself",
     },
   ],
   languages: [
     {
-      name: 'Español',
-      icon: 'https://img.icons8.com/color/spain',
-      level: 'Nativo',
+      name: "Español",
+      icon: "https://img.icons8.com/color/spain",
+      level: "Native",
     },
     {
-      name: 'Ingles',
-      icon: 'https://img.icons8.com/color/usa',
-      level: 'Avanzado',
+      name: "Ingles",
+      icon: "https://img.icons8.com/color/usa",
+      level: "Excellent reading and listening. So-so speaking",
     },
   ],
-}
+};
 
-console.info('%cHola curios@!', 'color: #00ff00; background-color: black; font-size: 2em;');
-console.log('%cSi estas aqui, probablemente quieras conocer un poco mas de este desarrollo', 'color: #000; background-color: #fff; font-size: 1.1em;');
-console.log('%cPara tu comodidad, te dejare el objeto del perfil de prueba', 'color: #000; background-color: #fff; font-size: 1.1em;');
-console.log('%cEn un futuro, la pagina podra servir diferentes templates de CV a otros usuarios 😊', 'font-size: 0.8em;');
+console.info(
+  "%cHola curios@!",
+  "color: #00ff00; background-color: black; font-size: 2em;"
+);
+console.log(
+  "%cSi estas aqui, probablemente quieras conocer un poco mas de este desarrollo",
+  "color: #000; background-color: #fff; font-size: 1.1em;"
+);
+console.log(
+  "%cPara tu comodidad, te dejare el objeto del perfil de prueba",
+  "color: #000; background-color: #fff; font-size: 1.1em;"
+);
+console.log(
+  "%cEn un futuro, la pagina podra servir diferentes templates de CV a otros usuarios 😊",
+  "font-size: 0.8em;"
+);
 console.log(profileExample);
-
 
 const CvPage: NextPage = () => {
   let dropdownDurationMS = 500;
   let msgVisibilityMs = 2500;
-  const { message, isMsgVisible, pushMessage } = useMessage(msgVisibilityMs)
-  const lastPageItem = useRef<HTMLDivElement>(null)
+  const { message, isMsgVisible, pushMessage } = useMessage(msgVisibilityMs);
+  const lastPageItem = useRef<HTMLDivElement>(null);
 
   const [showingFooter, setShowingFooter] = useState(false);
   const [isScrolledMax, setIsScrolledMax] = useState(false);
 
-
   useEffect(() => {
     const onScroll = () => {
-      let currentScrollY = window.innerHeight + window.scrollY
+      let currentScrollY = window.innerHeight + window.scrollY;
       let minScrolledWindowPercentage = 0.95;
 
-      setIsScrolledMax(currentScrollY >= document.body.offsetHeight * minScrolledWindowPercentage);
-    }
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+      setIsScrolledMax(
+        currentScrollY >=
+          document.body.offsetHeight * minScrolledWindowPercentage
+      );
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-
   const toggleFooter = () => {
-    let timeoutMultiplier = 1.3
-    let scrollTimeout = dropdownDurationMS * timeoutMultiplier
+    let timeoutMultiplier = 1.3;
+    let scrollTimeout = dropdownDurationMS * timeoutMultiplier;
     setShowingFooter(!showingFooter);
 
     if (isScrolledMax) {
@@ -277,20 +268,31 @@ const CvPage: NextPage = () => {
     <>
       <Head>
         <title>Curriculum | Ramon Irala</title>
-        <meta name="description" content="Curriculum de Ramon Irala con estilo MeLi" />
+        <meta
+          name="description"
+          content="Curriculum de Ramon Irala con estilo MeLi"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <Header />
-      <Profile profile={profileExample} showingFooter={showingFooter} toggleFooter={toggleFooter} pushMessage={pushMessage} />
+      <Profile
+        profile={profileExample}
+        showingFooter={showingFooter}
+        toggleFooter={toggleFooter}
+        pushMessage={pushMessage}
+      />
 
-      {
-        !isMsgVisible
-          ? null
-          : <Message message={message} durationMs={msgVisibilityMs} />
-      }
+      {!isMsgVisible ? null : (
+        <Message message={message} durationMs={msgVisibilityMs} />
+      )}
 
-      <Footer profileName={profileExample.name} profileContact={profileExample.contact} showingFooter={showingFooter} toggleFooter={toggleFooter} />
+      <Footer
+        profileName={profileExample.name}
+        profileContact={profileExample.contact}
+        showingFooter={showingFooter}
+        toggleFooter={toggleFooter}
+      />
 
       <div ref={lastPageItem}></div>
     </>
