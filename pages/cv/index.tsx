@@ -38,6 +38,7 @@ let profileExample = {
     {
       where: "Garantizar SGR",
       from: new Date("2022-12-31"),
+      to: new Date(),
       title: "Full Stack Developer",
       seniority: "Junior",
       isCurrent: true,
@@ -205,7 +206,7 @@ let profileExample = {
     {
       name: "Ingles",
       icon: "https://img.icons8.com/color/usa",
-      level: "Excellent reading and listening. So-so speaking",
+      level: "Excellent reading and listening - C2 Level",
     },
   ],
 };
