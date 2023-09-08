@@ -32,7 +32,7 @@ const Profile: React.FC<IProfile> = ({ profile, showingFooter, toggleFooter, pus
       <ProfileLanguages languages={profile.languages} />
       <ProfileCustom customSection={{ name: profile.name, ...profile.customSection, }} />
       <aside>
-        <p><FontAwesomeIcon icon={faHammer} width='10px' /> Made by <a href="https://www.linkedin.com/in/ramon-irala-220362110/" target='__blank' >Ramon Irala</a>, inspired on <a href="https://www.mercadolibre.com.ar" target="_blank">MercadoLibre</a> </p>
+        <p><FontAwesomeIcon icon={faHammer} width='10px' /> Made by <a href="https://www.linkedin.com/in/ramon-irala-220362110/" target='_blank' rel="noreferrer">Ramon Irala</a>, inspired on <a href="https://www.mercadolibre.com.ar" target="_blank" rel="noreferrer">MercadoLibre</a> </p>
         <p>May 2022</p>
       </aside>
     </>

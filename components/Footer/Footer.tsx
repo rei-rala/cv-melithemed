@@ -143,7 +143,7 @@ const ContactIcon: React.FC<{
       />
       <b>{type}</b>
       {
-        urlToOpen === "#" ? <i>{urlToShow}</i> : <a href={urlToOpen} target='__blank' >{urlToShow}</a>
+        urlToOpen === "#" ? <i>{urlToShow}</i> : <a href={urlToOpen} target='_blank' rel="noreferrer">{urlToShow}</a>
       }
 
       <style jsx>{`
