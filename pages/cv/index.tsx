@@ -198,20 +198,16 @@ let profileExample = {
 };
 
 console.info(
-  "%cHola curios@!",
+  "%cHola!",
   "color: #00ff00; background-color: black; font-size: 2em;"
 );
 console.log(
-  "%cSi estas aqui, probablemente quieras conocer un poco mas de este desarrollo",
-  "color: #000; background-color: #fff; font-size: 1.1em;"
+  "%cEn un futuro, la pagina serviría diferentes templates de CV a otros usuarios 😊",
+  "font-size: 0.9em;"
 );
 console.log(
-  "%cPara tu comodidad, te dejare el objeto del perfil de prueba",
-  "color: #000; background-color: #fff; font-size: 1.1em;"
-);
-console.log(
-  "%cEn un futuro, la pagina podra servir diferentes templates de CV a otros usuarios 😊",
-  "font-size: 0.8em;"
+  "%cTe dejo el modelito hardcoded",
+  "font-size: 0.9em;"
 );
 console.log(profileExample);
 
