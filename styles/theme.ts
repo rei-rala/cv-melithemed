@@ -11,6 +11,7 @@ export const MEASURES = {
   longer: 'var(--measure-longer)',
   longest: 'var(--measure-longest)',
   padding: 'var(--measure-padding)',
+  textMaxWidth: 'var(--measure-text-max-width)'
 }
 
 export const COLORS = {

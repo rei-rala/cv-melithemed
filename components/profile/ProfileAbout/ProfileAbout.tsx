@@ -36,6 +36,8 @@ const ProfileAbout: React.FC<ProfileDetailProps> = ({ about }) => {
           text-align: justify;
           margin: ${MEASURES.borders} 0;
           min-height: ${MEASURES.near};
+          margin: auto;
+          max-width: ${MEASURES.textMaxWidth};
         }
       `}</style>
     </section>

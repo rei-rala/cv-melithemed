@@ -26,11 +26,13 @@ type ProfessionalHistory = History & {
 
 const bothProfileJSX = `
   section article {
-    margin: ${MEASURES.short};
     border: 1px inset ${COLORS.blue};
     border-radius: ${MEASURES.long};
     overflow: hidden;
     text-align: center;
+    
+    margin: ${MEASURES.short} auto;
+    max-width: ${MEASURES.textMaxWidth};
   }
 
   section article > div > div {

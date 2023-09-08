@@ -21,7 +21,7 @@ let profileExample = {
   Github: https://github.com/rei-rala
   Email: ramonirala@outlook.com`,
   images: [
-    "https://media.licdn.com/dms/image/C4D03AQECDCVkG6IfxQ/profile-displayphoto-shrink_800_800/0/1668085573452?e=1684972800&v=beta&t=tngZWhkZuDfBWn-4Qh2_vO4EKR0Xmp1bcfW7opOL3-M",
+    "https://media.licdn.com/dms/image/C4D03AQECDCVkG6IfxQ/profile-displayphoto-shrink_400_400/0/1668085573452?e=1699488000&v=beta&t=UM5iPj6p2kIhw0SEFl8RzffVuS7OldSQ4u6sJ7uJOmg",
   ],
   academic: [
     {
@@ -83,22 +83,22 @@ let profileExample = {
       {
         text: "HTML5",
         icon: "https://img.icons8.com/color/html-5",
-        tooltip: "+2 years of experience",
+        tooltip: "+3 years of experience", // 2020
       },
       {
         text: "CSS3",
         icon: "https://img.icons8.com/color/css3",
-        tooltip: "+2 years of experience",
+        tooltip: "+3 years of experience",// 2020
       },
       {
         text: "SASS",
         icon: "https://img.icons8.com/color/sass",
-        tooltip: "+2 years of experience",
+        tooltip: "+3 years of experience",// 2020
       },
       {
         icon: "https://img.icons8.com/color/javascript",
         text: "JavaScript",
-        tooltip: "+2 years of experience",
+        tooltip: "+3 years of experience",// 2020
       },
       {
         icon: "https://img.icons8.com/color/react-native",
@@ -108,7 +108,7 @@ let profileExample = {
       {
         text: "Next.js",
         icon: "https://img.icons8.com/color/nextjs",
-        tooltip: "a year of experience",
+        tooltip: "2 years of experience",
       },
       {
         text: "C#",
@@ -118,32 +118,17 @@ let profileExample = {
       {
         icon: "https://img.icons8.com/color/nodejs",
         text: "Node.js",
-        tooltip: "+1 years of experience",
+        tooltip: "2 years of experience",
       },
       {
         text: "Express",
         icon: "https://img.icons8.com/color/express",
-        tooltip: "+1 years of experience",
+        tooltip: "2 years of experience",
       },
       {
         text: "Firebase",
         icon: "https://img.icons8.com/color/firebase",
-        tooltip: "Basic",
-      },
-      {
-        icon: "https://img.icons8.com/color/python",
-        text: "Python",
-        tooltip: "",
-      },
-      {
-        icon: "https://img.icons8.com/color/django",
-        text: "Django",
-        tooltip: "",
-      },
-      {
-        icon: "https://img.icons8.com/color/java",
-        text: "Java",
-        tooltip: "",
+        tooltip: "Just basic",
       },
       {
         icon: "https://img.icons8.com/color/git",
@@ -161,7 +146,7 @@ let profileExample = {
         tooltip: "A year of experience",
       },
       {
-        text: "SQL",
+        text: "SQL Server",
         icon: "https://img.icons8.com/color/sql",
         tooltip: "A year of experience",
       },
@@ -199,14 +184,14 @@ let profileExample = {
   ],
   languages: [
     {
-      name: "Español",
+      name: "Spanish",
       icon: "https://img.icons8.com/color/spain",
       level: "Native",
     },
     {
-      name: "Ingles",
+      name: "English",
       icon: "https://img.icons8.com/color/usa",
-      level: "Excellent reading and listening - C2 Level",
+      level: "C2",
     },
   ],
 };

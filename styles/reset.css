@@ -33,6 +33,7 @@
   --measure-longer: 2.3rem;
   --measure-longest: 3.25rem;
   --measure-padding: var(--measure-shorter);
+  --measure-text-max-width: 80ch;
 
   --color-borders: hsla(0, 0%, 20%, 0.5);
   --color-text: #111;

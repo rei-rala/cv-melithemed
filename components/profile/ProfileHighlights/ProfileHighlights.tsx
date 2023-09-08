@@ -48,6 +48,10 @@ const ProfileHighlights: React.FC<Props> = ({ highlights }) => {
                 margin-bottom: ${MEASURES.near};
               }
 
+              ul {
+                margin: auto;
+                max-width: ${MEASURES.textMaxWidth};
+              }
 
             `}</style>
 

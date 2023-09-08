@@ -5,11 +5,15 @@ const defaultVariant = {
   default: {
     cursor: "pointer",
     border: "none",
-    'border-radius': MEASURES.radius,
+    "border-radius": MEASURES.radius,
+    transition: 'transform 100ms'
   },
-  defaultHover: {
+  hover: {
     filter: "brightness(0.95)",
   },
+  active: {
+    transform: "scale(0.95)"
+  }
 }
 
 interface Props {
@@ -20,7 +24,8 @@ interface Props {
 }
 
 let defaultStyle = Object.entries(defaultVariant.default).map(([key, value]) => `${key}: ${value};`).join(';');
-let defaultHoverStyle = Object.entries(defaultVariant.defaultHover).map(([key, value]) => `${key}: ${value};`).join(';')
+let defaultHoverStyle = Object.entries(defaultVariant.hover).map(([key, value]) => `${key}: ${value};`).join(';')
+let defaultActiveStyle = Object.entries(defaultVariant.active).map(([key, value]) => `${key}: ${value};`).join(';');
 
 
 const Button: React.FC<Props> = ({ children, onClick, variant, addStyles }) => {
@@ -35,6 +40,10 @@ const Button: React.FC<Props> = ({ children, onClick, variant, addStyles }) => {
         }
         button:hover {
           ${defaultHoverStyle}
+        }
+
+        button:active {
+          ${defaultActiveStyle}
         }
       `}</style>
     </button>

@@ -144,6 +144,14 @@ const ProfileMain: React.FC<ProfileMainProps> = ({ name, currently, headline, im
           justify-content: space-evenly;
         }
 
+        main > div:nth-child(3) span {
+          transition: transform 100ms;
+        }
+
+        main > div:nth-child(3) span:active {
+          transform: scale(0.95);
+        }
+
         p:first-of-type {
           font-size: ${MEASURES.near};
           color: ${COLORS.lightGray};

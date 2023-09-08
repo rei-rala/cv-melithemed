@@ -287,6 +287,7 @@ const Footer: React.FC<IFooter> = ({
           flex-wrap: nowrap;
           justify-content: space-around;
           width: 100%;
+          max-width: 800px;
         }
 
         li {
