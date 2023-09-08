@@ -10,13 +10,14 @@ let profileExample = {
   ownerId: "",
   name: "Ramon Irala",
   headline: "Fullstack Developer Junior",
-  about: `I was a student in the Public Accountant degree program at the University of Buenos Aires until 2020. Currently, I am studying the University Technical Degree in Software Development at UADE, after which I will continue with a degree in Computer Engineering.
+  about: `I was a student in the Public Accountant program at Buenos Aires University until 2020. Now, I'm studying Software Development at UADE and plan to pursue Computer Engineering ❤️
 
-  Personally, I learned web development through various courses and the internet. At present, I am focused on learning, practicing with project development, and continuing to learn about the processes and best practices in this field. I mainly program in JavaScript and some Python. I use React and Next.js as web frontend frameworks. For backend, I use Node.js, Express, and some Django and Flask. I also use technologies such as TypeScript, SQL, MongoDB, jQuery, SASS, among others.
+  Since December 2022, I've been working as a full-stack developer using Angular+vanilla JavaScript, ASP.NET MVC, and SQL Server.
   
-  I like to describe myself as an analytical, detail-oriented, and enthusiastic person who enjoys identifying weaknesses and areas for improvement and developing solutions. I am interested in furthering my knowledge in front-end development, learning backend development, and blockchain.
+  I've learned web development through courses and online resources. I enjoy using Next.js (React) for the frontend and Node.js with Express for the backend. Other technologies I love include TypeScript, MongoDB, SASS, and more.
   
-  My portfolio is still in development, but my Github can be visited to get an idea of what I am currently working on.
+  I'm analytical, detail-oriented, and always striving for improvement!
+  My portfolio is a work in progress; you can check my GitHub for my current projects (although some might be top secret 😉)
   
   Github: https://github.com/rei-rala
   Email: ramonirala@outlook.com`,
