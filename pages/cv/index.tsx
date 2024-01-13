@@ -22,7 +22,7 @@ let profileExample = {
   Github: https://github.com/rei-rala
   Email: ramonirala@outlook.com`,
   images: [
-  "https://media.licdn.com/dms/image/C4D03AQECDCVkG6IfxQ/profile-displayphoto-shrink_800_800/0/1668085573858?e=1710374400&v=beta&t=9xXjj6FPVYCLSyluSl85UOf4mzOGa0E84c4nC8S22lw"
+    "https://media.licdn.com/dms/image/C4D03AQECDCVkG6IfxQ/profile-displayphoto-shrink_800_800/0/1668085573858?e=1710374400&v=beta&t=9xXjj6FPVYCLSyluSl85UOf4mzOGa0E84c4nC8S22lw"
   ],
   academic: [
     {
@@ -223,7 +223,7 @@ const CvPage: NextPage = () => {
 
       setIsScrolledMax(
         currentScrollY >=
-          document.body.offsetHeight * minScrolledWindowPercentage
+        document.body.offsetHeight * minScrolledWindowPercentage
       );
     };
     window.addEventListener("scroll", onScroll);

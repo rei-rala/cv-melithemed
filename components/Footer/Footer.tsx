@@ -201,7 +201,7 @@ const Footer: React.FC<IFooter> = ({
   return !profileName ? null : (
     <footer>
       <div onClick={toggleFooter}>
-        {profileName}'s social networks
+        {profileName}&apos;s social networks
         <span>
           <FontAwesomeIcon icon={faAngleUp} width="16px" />
         </span>
