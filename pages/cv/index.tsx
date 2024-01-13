@@ -22,7 +22,7 @@ let profileExample = {
   Github: https://github.com/rei-rala
   Email: ramonirala@outlook.com`,
   images: [
-    "https://media.licdn.com/dms/image/C4D03AQECDCVkG6IfxQ/profile-displayphoto-shrink_400_400/0/1668085573452?e=1699488000&v=beta&t=UM5iPj6p2kIhw0SEFl8RzffVuS7OldSQ4u6sJ7uJOmg",
+  "https://media.licdn.com/dms/image/C4D03AQECDCVkG6IfxQ/profile-displayphoto-shrink_800_800/0/1668085573858?e=1710374400&v=beta&t=9xXjj6FPVYCLSyluSl85UOf4mzOGa0E84c4nC8S22lw"
   ],
   academic: [
     {
@@ -177,10 +177,6 @@ let profileExample = {
     {
       type: "good",
       text: "Positive attitude",
-    },
-    {
-      type: "bad",
-      text: "Sometimes I underestimate myself",
     },
   ],
   languages: [

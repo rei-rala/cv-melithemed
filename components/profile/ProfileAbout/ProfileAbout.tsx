@@ -8,7 +8,7 @@ interface ProfileDetailProps {
 const ProfileAbout: React.FC<ProfileDetailProps> = ({ about }) => {
   return (
     <section>
-      <h2>Acerca del postulante</h2>
+      <h2>About me</h2>
 
       <div>{about.split('\n').map((line, lIdx) => <p key={`lineAbout-${lIdx}`}>{line}</p>)}</div>
 

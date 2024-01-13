@@ -44,9 +44,9 @@ const ProfileCustom: React.FC<{ customSection: ICustomSection }> = ({ customSect
 
   return (
     <section>
-      <i title={`Esta seccion fue añadida por ${name}`}>Seccion personalizada</i>
+      <i title={`Customized by ${name}`}>Custom Section</i>
       <h2>{title}</h2>
-      <sup>{hover} sobre las mismas</sup>
+      <sup>{hover}</sup>
 
       <ul>
         {lines.map(({icon, text, tooltip}, index) => (

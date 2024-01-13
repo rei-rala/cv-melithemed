@@ -7,7 +7,7 @@ import { COLORS, MEASURES } from "styles/theme";
 const DeliverTo: React.FC = () => {
   return <div>
     <div>
-      <span><FontAwesomeIcon icon={faLocationDot} width='16px' /></span> <span><p>Acercar  <a href={"#"}>oportunidades</a></p></span>
+      <span><FontAwesomeIcon icon={faLocationDot} width='16px' /></span> <span><p>Bring <a href={"#"}>opportunities</a></p></span>
       <span><FontAwesomeIcon icon={faAngleRight} width='16px' /></span>
     </div>
 
@@ -54,7 +54,7 @@ const DeliverTo: React.FC = () => {
         span:nth-child(2) {
           flex-direction: column;
           flex-wrap: wrap;
-          flex-grow: 0;
+          flex-grow: 1;
           width: auto;
         }
         p {

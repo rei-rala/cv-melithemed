@@ -19,7 +19,7 @@ const ProfileHighlights: React.FC<Props> = ({ highlights }) => {
       {
         highlights && highlights.length > 0 ? (
           <section>
-            <h2>Mini FODA</h2>
+            <h2>More about me</h2>
 
             <ul>
               {

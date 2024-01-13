@@ -48,9 +48,10 @@ const ProfileMain: React.FC<ProfileMainProps> = ({ name, currently, headline, im
 
     try {
       copy(copyText, { format: "text/plain" })
-      pushMessage('Link copiado a portapapeles!')
+      pushMessage('Copied!')
     } catch (err: any) {
-      pushMessage('Error al copiar a portapapeles')
+      pushMessage('Error!')
+      console.log(err)
     }
   };
 
@@ -75,12 +76,12 @@ const ProfileMain: React.FC<ProfileMainProps> = ({ name, currently, headline, im
         <p>{currently}</p>
         <h1>{name} <i>{headline}</i></h1>
         <p>
-          Postulante con
-          <span>
-            identidad verificada
-            <FontAwesomeIcon icon={faUserCheck} width="16px" />
-          </span>
-        </p>
+  Applicant with
+  <span>
+    verified identity
+    <FontAwesomeIcon icon={faUserCheck} width="16px" />
+  </span>
+</p> 
       </div>
 
       <div>
@@ -91,9 +92,9 @@ const ProfileMain: React.FC<ProfileMainProps> = ({ name, currently, headline, im
       </div>
 
       <div>
-        <h2>Disponible</h2>
+        <h2>Open for job offers</h2>
         <div>
-          <Button variant="info" addStyles={{ padding: '0.75rem' }} onClick={toggleFooterFromMain}>Contactar</Button>
+          <Button variant="info" addStyles={{ padding: '0.75rem' }} onClick={toggleFooterFromMain}>Get in touch</Button>
         </div>
 
         <div>
@@ -102,13 +103,13 @@ const ProfileMain: React.FC<ProfileMainProps> = ({ name, currently, headline, im
               icon={isInFavourites ? faHeartCircleMinus : faHeartCirclePlus}
               width="16px"
             />
-            {isInFavourites ? "Quitar de" : "Agregar a"} favoritos
+            {isInFavourites ? "Remove from " : "Add to " } Favorites
           </span>
 
 
           <span onClick={copyUrlToClipboard}>
             <FontAwesomeIcon icon={faCopy} width="16px" />
-            Compartir
+            Copy to Clipboard
           </span>
         </div>
       </div>

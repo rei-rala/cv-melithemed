@@ -62,7 +62,7 @@ let monthNames: MonthName  = {
 
 type IFormatDate = (dateLike: Date | string, options: { locale?: locales, sep?: string}) => {[key:string]: string}
 
-export const formatDate: IFormatDate = (dateLike: Date | string, {locale=locales.ES, sep='/'}) => {
+export const formatDate: IFormatDate = (dateLike: Date | string, {locale=locales.EN, sep='/'}) => {
   let src = typeof dateLike === "string" ? new Date(dateLike) : dateLike;
 
   let dd =  `0${src.getDate()}`.slice(-2);

@@ -107,7 +107,7 @@ const ProfileDetail: React.FC<{ academicHistory: AcademicHistory[], professional
 
   return (
     <section>
-      <h2>Historial</h2>
+      <h2>Academic and Employment History</h2>
 
       {
         hasProfessionalHistory ? <ProfessionalHistory professionalHistory={professionalHistory} /> : null

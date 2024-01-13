@@ -31,7 +31,7 @@ const ProfileLanguages: React.FC<{ languages: IProfileLanguage[] }> = ({ languag
       ? null
       : (
         <section>
-          <h2>Idiomas</h2>
+          <h2>Languages</h2>
           <ul>
 
             {languages.map((language: IProfileLanguage, index: number) => (
